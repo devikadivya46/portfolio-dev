@@ -1,32 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #984700;
-  --color-solar-orange: #FF7C00;
-  --color-surface: #fdf9f4;
+  /* Palette from user: Warm Alabaster, Dried Linen / Sage, Espresso Brown, Terracotta Accent (slightly orange-tinted) */
+  --color-warm-alabaster: #F7F4EF;
+  --color-dried-linen: #C2BCB2;
+  --color-espresso-brown: #1C1310;
+  --color-terracotta: #9A4E2F; /* Terracotta Accent with a slight orange mix */
+
+  --color-surface: var(--color-warm-alabaster);
   --color-surface-dim: #ded9d4;
   --color-canvas-paper: #FFFAF5;
   --color-background-dark: #1a1a1e;
-  --color-on-background: #1d1b19;
-  --color-muted-sand: #D1CCC7;
-  --color-primary-container: #ff7c00;
+  --color-on-background: var(--color-espresso-brown);
+  --color-muted-sand: var(--color-dried-linen);
+  --color-primary-container: var(--color-terracotta);
   --color-secondary-container: #e9e1dd;
 
   --font-sans: "Inter", sans-serif;
   --font-display: "Outfit", sans-serif;
   --font-serif: "Playfair Display", serif;
 
-  --shadow-neu-flat: 8px 8px 16px rgba(180, 190, 201, 0.25), -8px -8px 16px rgba(255, 255, 255, 0.95);
+  --shadow-neu-flat: 8px 8px 16px rgba(163, 177, 198, 0.25), -8px -8px 16px rgba(255, 255, 255, 0.95);
   --shadow-neu-flat-dark: 8px 8px 16px rgba(0, 0, 0, 0.45), -8px -8px 16px rgba(45, 45, 52, 0.35);
-  --shadow-neu-pressed: inset 5px 5px 10px rgba(180, 190, 201, 0.25), inset -5px -5px 10px rgba(255, 255, 255, 0.95);
+  --shadow-neu-pressed: inset 5px 5px 10px rgba(163, 177, 198, 0.25), inset -5px -5px 10px rgba(255, 255, 255, 0.95);
   --shadow-neu-pressed-dark: inset 5px 5px 10px rgba(0, 0, 0, 0.45), inset -5px -5px 10px rgba(45, 45, 52, 0.35);
-  --shadow-neu-btn: 4px 4px 8px rgba(180, 190, 201, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.95);
+  --shadow-neu-btn: 4px 4px 8px rgba(163, 177, 198, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.95);
 }
 
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #fdf9f4;
+    background-color: var(--color-warm-alabaster);
+    color: var(--color-on-background);
     position: relative;
     overflow-x: hidden;
   }
@@ -37,8 +42,8 @@
 
   /* Celestial Custom Selection Styling */
   ::selection {
-    background-color: rgba(255, 124, 0, 0.25);
-    color: #FF7C00;
+    background-color: rgba(154, 78, 47, 0.18); /* terracotta tint */
+    color: var(--color-espresso-brown);
   }
 
   .dark ::selection {
@@ -51,7 +56,7 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #FFFAF5;
+    background: var(--color-canvas-paper);
   }
   .dark ::-webkit-scrollbar-track {
     background: #16161a;
@@ -67,7 +72,7 @@
     border: 2.5px solid #16161a;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #FF7C00;
+    background: var(--color-terracotta);
   }
 }
 
@@ -226,3 +231,78 @@
 .dark .celestial-motif {
   filter: grayscale(1) invert(1);
 }
+
+/* Floral illustration utilities — placement, opacity, and layering */
+:root {
+  --flower-opacity: 0.5; /* sensible default: 40% - 60% recommended */
+}
+
+.flower-illustration {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  opacity: var(--flower-opacity);
+  max-width: 48%;
+  height: auto;
+  will-change: transform, opacity;
+  transition: opacity 180ms ease, transform 220ms ease;
+  transform-origin: center bottom;
+  mix-blend-mode: multiply;
+}
+
+/* Place the flower peeking from the bottom-left corner of a section */
+.flower-left {
+  left: -6%;
+  bottom: -4%;
+  transform: translateX(-8%) rotate(-6deg) scale(1);
+  z-index: 0; /* behind most content */
+}
+
+/* Place the flower peeking from the bottom-right corner of a section */
+.flower-right {
+  right: -6%;
+  bottom: -4%;
+  transform: translateX(8%) rotate(6deg) scale(1);
+  z-index: 0;
+}
+
+/* Small / large size helpers */
+.flower-sm { max-width: 30%; }
+.flower-md { max-width: 45%; }
+.flower-lg { max-width: 65%; }
+
+/* Quick opacity presets */
+.flower-opacity-40 { --flower-opacity: 0.4; }
+.flower-opacity-50 { --flower-opacity: 0.5; }
+.flower-opacity-60 { --flower-opacity: 0.6; }
+
+/* Allow content boxes to intentionally overlap the flower illustration */
+.overlap-top { position: relative; z-index: 2; }
+.flower-behind { z-index: 0; }
+
+/* Slight responsive adjustments so flowers peek nicely on small screens */
+@media (max-width: 768px) {
+  .flower-left, .flower-right {
+    max-width: 42%;
+    bottom: -10%;
+    opacity: calc(var(--flower-opacity) - 0.05);
+    transform: translateX(0) rotate(0deg) scale(0.95);
+  }
+}
+
+@media (min-width: 1200px) {
+  .flower-left { left: -8%; }
+  .flower-right { right: -8%; }
+}
+
+/* Usage notes (JSX example):
+  <section className="relative">
+    <img src="/assets/images/flowers-left.png" alt="floral" className="flower-illustration flower-left flower-md flower-opacity-50" />
+    <div className="overlap-top"> ... content ... </div>
+  </section>
+
+Tips:
+ - Use the opacity classes or inline style to fine-tune (40%–60% recommended).
+ - Keep the illustration `pointer-events: none` so it never blocks interaction.
+ - Raise content z-index with `overlap-top` to let cards and headings sit above the flowers.
+*/
