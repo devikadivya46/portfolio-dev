@@ -119,7 +119,7 @@ export default function Projects() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 xl:gap-28">
+        <div className="mx-auto grid max-w-6xl md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, idx) => {
               const isSecond = idx === 1;
@@ -135,40 +135,40 @@ export default function Projects() {
                   viewport={{ once: true, margin: "-100px" }}
                 >
                   {/* Neomorphic Project Card Canvas */}
-                  <div className="neu-card p-4 sm:p-6 rounded-3xl mb-8 sm:mb-10 overflow-hidden transform group-hover:translate-y-[-6px] transition-all duration-500 relative">
+                  <div className="neu-card p-4 sm:p-5 rounded-[24px] mb-8 sm:mb-10 overflow-hidden transform group-hover:translate-y-[-6px] transition-all duration-500 relative">
                     
                     {/* Outer Tech Display Symbol */}
-                    <div className="aspect-[16/9] overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-900/50 flex items-center justify-center relative shadow-neu-pressed dark:shadow-neu-pressed-dark mb-6">
-                      <span className="material-icons-outlined text-slate-200 dark:text-slate-800 text-9xl absolute opacity-30 select-none transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-700 ease-out">
+                    <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-900/50 flex items-center justify-center relative shadow-neu-pressed dark:shadow-neu-pressed-dark mb-5 sm:mb-6">
+                      <span className="material-icons-outlined text-slate-200 dark:text-slate-800 text-7xl sm:text-8xl lg:text-9xl absolute opacity-28 select-none transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-700 ease-out">
                         {project.icon}
                       </span>
                       
                       {/* Floating Tech Badges */}
-                      <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-20">
+                      <div className="absolute top-3 left-3 flex flex-wrap gap-2 z-20">
                         {project.techStack.map((tech) => (
-                          <span key={tech} className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-sm shadow-sm text-slate-700 dark:text-slate-300 text-[10px] font-bold font-display px-2.5 py-1 rounded-md">
+                          <span key={tech} className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-sm shadow-sm text-slate-700 dark:text-slate-300 text-[9px] sm:text-[10px] font-bold font-display px-2 py-1 rounded-md">
                             {tech}
                           </span>
                         ))}
                       </div>
 
                       <div className="relative z-10 text-center px-4">
-                        <div className="text-solar-orange font-black uppercase tracking-widest text-[10px] mb-2 font-display">
+                        <div className="text-solar-orange font-black uppercase tracking-[0.18em] text-[9px] sm:text-[10px] mb-2 font-display">
                           {project.year}
                         </div>
-                        <div className="text-3xl font-bold text-slate-800 dark:text-white font-display">
+                        <div className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white font-display">
                           {project.title}
                         </div>
                       </div>
                     </div>
 
                     {/* Bullet points detailing exact work contributions */}
-                    <div className="space-y-4 px-2 mb-8">
+                    <div className="space-y-3 px-1 sm:px-2 mb-6 sm:mb-7">
                       <p className="text-slate-500 dark:text-slate-400 font-semibold text-xs uppercase tracking-wider font-display">Key Highlights</p>
-                      <ul className="space-y-3">
+                      <ul className="space-y-2.5">
                         {project.bullets.map((bullet, bIdx) => (
-                          <li key={bIdx} className="flex gap-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                            <span className="material-icons-outlined text-solar-orange text-base select-none mt-0.5 shrink-0">
+                          <li key={bIdx} className="flex gap-3 text-[13px] sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                            <span className="material-icons-outlined text-solar-orange text-sm sm:text-base select-none mt-0.5 shrink-0">
                               check_circle
                             </span>
                             <span>{bullet}</span>
@@ -179,7 +179,7 @@ export default function Projects() {
 
                     {/* GitHub Repository Telemetry Stats Section */}
                     {project.githubRepo && (
-                      <div className="mb-8 px-2">
+                      <div className="mb-6 sm:mb-7 px-1 sm:px-2">
                         <GithubStatsCard 
                           githubRepo={project.githubRepo} 
                           fallbackStats={project.fallbackStats}
@@ -189,7 +189,7 @@ export default function Projects() {
 
                     {/* Live URL Link Button */}
                     {project.demoUrl && (
-                      <div className="px-2">
+                      <div className="px-1 sm:px-2">
                         <a
                           href={project.demoUrl}
                           target="_blank"
