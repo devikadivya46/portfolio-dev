@@ -47,36 +47,36 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden" id="contact">
+    <section className="py-20 sm:py-24 relative overflow-hidden" id="contact">
       
       {/* Decorative gradient overlay */}
       <div className="absolute top-[30%] left-[-10%] w-[400px] aspect-square rounded-full bg-gradient-to-tr from-amber-200/20 to-transparent blur-3xl dark:from-orange-500/5 dark:to-transparent pointer-events-none select-none z-0" />
 
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         
         {/* Symmetrical Section Header */}
-        <div className="mb-16 text-center md:text-left select-none">
+        <div className="mb-12 sm:mb-16 text-center md:text-left select-none">
           <p className="text-solar-orange text-xs font-bold tracking-[0.25em] uppercase font-display mb-3">✦ GET IN TOUCH ✦</p>
-          <h2 className="text-4xl md:text-5xl font-black font-serif tracking-tight text-slate-900 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black font-serif tracking-tight text-slate-900 dark:text-white">
             Let's create something <span className="italic font-normal">extraordinary</span> together.
           </h2>
         </div>
 
-        <div className="grid grid-cols-12 gap-y-12 lg:gap-y-0 lg:gap-x-12 items-stretch">
+        <div className="grid grid-cols-12 gap-y-10 lg:gap-y-0 lg:gap-x-12 items-stretch">
           
           {/* LEFT COLUMN: Hand-Drawn Doodle Frame & Personal Information Cards */}
-          <div className="col-span-12 lg:col-span-5 flex flex-col justify-between gap-8 order-2 lg:order-1">
+          <div className="col-span-12 lg:col-span-5 flex flex-col justify-between gap-6 sm:gap-8 order-2 lg:order-1">
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="flex flex-col gap-8 h-full justify-between"
+              className="flex flex-col gap-6 sm:gap-8 h-full justify-between"
             >
               
               {/* Hand-Drawn Doodle Frame wrapper resembling the style of About/Skills */}
-              <div className="neu-card p-6 md:p-8 rounded-3xl flex flex-col items-center justify-center relative overflow-hidden bg-white/50 dark:bg-slate-900/10 border border-slate-200/50 dark:border-slate-800/40">
-                <div className="w-[180px] sm:w-[220px] pointer-events-none select-none z-10 transform hover:scale-105 transition-transform duration-500">
+              <div className="neu-card p-5 sm:p-6 md:p-8 rounded-3xl flex flex-col items-center justify-center relative overflow-hidden bg-white/50 dark:bg-slate-900/10 border border-slate-200/50 dark:border-slate-800/40">
+                <div className="w-[160px] sm:w-[220px] pointer-events-none select-none z-10 transform hover:scale-105 transition-transform duration-500">
                   <img
                     src={CONTACT_TALKING_CHARS}
                     alt="Contact illustration"
@@ -91,7 +91,7 @@ export default function Contact() {
 
               {/* Quick info cards */}
               <div className="space-y-4">
-                <div className="neu-card p-5 rounded-2xl flex items-center gap-4 border border-orange-100/30 dark:border-slate-800/20">
+                <div className="neu-card p-4 sm:p-5 rounded-2xl flex items-center gap-4 border border-orange-100/30 dark:border-slate-800/20">
                   <div className="w-11 h-11 rounded-xl bg-orange-50 dark:bg-slate-900 border border-orange-100/50 dark:border-slate-800 flex items-center justify-center text-solar-orange">
                     <span className="material-symbols-outlined text-lg">mail</span>
                   </div>
@@ -103,7 +103,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="neu-card p-5 rounded-2xl flex items-center gap-4 border border-orange-100/30 dark:border-slate-800/20">
+                <div className="neu-card p-4 sm:p-5 rounded-2xl flex items-center gap-4 border border-orange-100/30 dark:border-slate-800/20">
                   <div className="w-11 h-11 rounded-xl bg-orange-50 dark:bg-slate-900 border border-orange-100/50 dark:border-slate-800 flex items-center justify-center text-solar-orange">
                     <span className="material-symbols-outlined text-lg">phone_iphone</span>
                   </div>
@@ -147,11 +147,11 @@ export default function Contact() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="p-8 md:p-10 rounded-[32px] bg-[#FFFAF5] dark:bg-[#16161a] border border-orange-100/45 dark:border-slate-800/40 shadow-neu-flat dark:shadow-neu-flat-dark h-full flex flex-col justify-between"
+              className="p-5 sm:p-8 md:p-10 rounded-[28px] sm:rounded-[32px] bg-[#FFFAF5] dark:bg-[#16161a] border border-orange-100/45 dark:border-slate-800/40 shadow-neu-flat dark:shadow-neu-flat-dark h-full flex flex-col justify-between"
             >
               <div>
                 <motion.div variants={itemVariants} className="mb-8 select-none text-left">
-                  <h3 className="text-2xl font-bold font-display text-slate-800 dark:text-white mb-2">
+                  <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-800 dark:text-white mb-2">
                     Send a Message
                   </h3>
                   <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-display font-medium leading-relaxed">

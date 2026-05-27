@@ -46,11 +46,11 @@ export default function Projects() {
     : projects.filter((project) => project.techStack.includes(activeFilter));
 
   return (
-    <section className="py-32 relative" id="projects">
-      <div className="container mx-auto px-6">
+    <section className="py-20 sm:py-24 lg:py-32 relative" id="projects">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
-          className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8"
+          className="mb-12 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8"
           variants={headingContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -64,7 +64,7 @@ export default function Projects() {
               Client &amp; Personal Works
             </motion.span>
             <motion.h2
-              className="text-5xl md:text-8xl font-bold max-w-4xl leading-tight text-slate-800 dark:text-white tracking-tight font-display"
+              className="text-4xl sm:text-5xl md:text-8xl font-bold max-w-4xl leading-tight text-slate-800 dark:text-white tracking-tight font-display"
               variants={headingItemVariants}
             >
               Crafting digital tools with impact.
@@ -84,7 +84,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Dynamic Tech Filter Row */}
-        <div className="flex flex-wrap items-center gap-4 mb-16 py-4 px-6 neu-card rounded-2xl">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-12 sm:mb-16 py-4 px-4 sm:px-6 neu-card rounded-2xl">
           <span className="text-[10px] uppercase tracking-widest text-slate-400 dark:text-slate-500 font-extrabold font-display">
             Filter:
           </span>
@@ -119,7 +119,7 @@ export default function Projects() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-20 lg:gap-28">
+        <div className="grid md:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 xl:gap-28">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, idx) => {
               const isSecond = idx === 1;
@@ -135,7 +135,7 @@ export default function Projects() {
                   viewport={{ once: true, margin: "-100px" }}
                 >
                   {/* Neomorphic Project Card Canvas */}
-                  <div className="neu-card p-6 rounded-3xl mb-10 overflow-hidden transform group-hover:translate-y-[-6px] transition-all duration-500 relative">
+                  <div className="neu-card p-4 sm:p-6 rounded-3xl mb-8 sm:mb-10 overflow-hidden transform group-hover:translate-y-[-6px] transition-all duration-500 relative">
                     
                     {/* Outer Tech Display Symbol */}
                     <div className="aspect-[16/9] overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-900/50 flex items-center justify-center relative shadow-neu-pressed dark:shadow-neu-pressed-dark mb-6">

@@ -1,4 +1,5 @@
 import React from "react";
+import { socialLinks } from "../data";
 
 export default function Footer() {
   const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -6,16 +7,76 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const quickLinks = [
+    { label: "About", href: "#about" },
+    { label: "Works", href: "#projects" },
+    { label: "Glimpses", href: "#glimpses" },
+    { label: "Contact", href: "#contact" },
+  ];
+
   return (
-    <footer className="py-16 border-t border-slate-200/20 dark:border-slate-800 relative z-10" id="footer">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 font-display text-center md:text-left">
-          Copyright © 2024 Devika S. N. <span className="text-solar-orange mx-2 select-none">✦</span> Handcrafted with celestial magic.
+    <footer className="relative z-10 border-t border-[#E8E0D7] bg-[#F7F4EF]" id="footer">
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-14 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+          <div className="lg:col-span-5 space-y-5">
+            <a
+              href="#hero"
+              onClick={handleScrollToTop}
+              className="inline-flex items-center gap-2 font-serif italic text-3xl text-[#1C1310]"
+            >
+              Devika.
+            </a>
+            <p className="max-w-md text-sm sm:text-base leading-7 text-[#5F5650]">
+              A warm, modern portfolio built around thoughtful design, clean code, and small details that feel polished on every screen.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center rounded-full border border-[#E8E0D7] bg-white/70 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#5F5650] transition-colors hover:border-[#D84C1B] hover:text-[#D84C1B]"
+                >
+                  {social.name}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-3 space-y-4">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#D84C1B] font-display">Quick Links</p>
+            <div className="flex flex-col gap-3">
+              {quickLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm font-medium text-[#1C1310] hover:text-[#D84C1B] transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-4 rounded-[28px] bg-white/70 border border-[#E8E0D7] shadow-[0_16px_40px_rgba(28,19,16,0.06)] p-6 sm:p-8">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#D84C1B] font-display">Let's Connect</p>
+            <h3 className="mt-3 text-2xl font-serif text-[#1C1310] leading-tight">
+              Open for internships, collaborations, and thoughtful builds.
+            </h3>
+            <a
+              href="#contact"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-[#1C1310] px-5 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            >
+              Start a conversation
+            </a>
+          </div>
         </div>
-        
-        <div className="flex gap-12">
+
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between border-t border-[#E8E0D7] pt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#7B736B]">
+          <p>Copyright © 2026 Devika S. N.</p>
           <a
-            className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 hover:text-solar-orange transition-colors flex items-center gap-2 font-display"
+            className="inline-flex items-center gap-2 hover:text-[#D84C1B] transition-colors"
             href="#hero"
             onClick={handleScrollToTop}
           >

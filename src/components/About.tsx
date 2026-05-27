@@ -57,12 +57,12 @@ export default function About() {
   ];
 
   return (
-    <section className="py-32 relative overflow-hidden" id="about">
-      <div className="container mx-auto px-6">
-        <div className="asymmetric-grid gap-16 items-start">
+    <section className="py-20 sm:py-24 lg:py-32 relative overflow-hidden" id="about">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Column (Character Vector & Tab Trigger) */}
           <motion.div
-            className="col-span-12 md:col-span-5 flex flex-col gap-10"
+            className="col-span-12 md:col-span-5 flex flex-col gap-8 sm:gap-10"
             variants={imageVariants}
             initial="hidden"
             whileInView="visible"
@@ -121,7 +121,7 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="mb-10"
+              className="mb-8 sm:mb-10"
             >
               <motion.span
                 className="inline-block bg-orange-100 dark:bg-orange-900/30 text-solar-orange px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-neu-btn font-display select-none"
@@ -131,7 +131,7 @@ export default function About() {
               </motion.span>
               
               <motion.h2
-                className="text-4xl md:text-5xl font-semibold leading-tight mb-8 max-w-2xl text-slate-800 dark:text-white font-display"
+                className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-6 sm:mb-8 max-w-2xl text-slate-800 dark:text-white font-display"
                 variants={headingItemVariants}
               >
                 A deep love for minimal design, clean code &amp; problem solving

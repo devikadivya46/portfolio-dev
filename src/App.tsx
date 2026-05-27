@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Skills from "./components/Skills";
 import About from "./components/About";
 import Projects from "./components/Projects";
+import Glimpses from "./components/Glimpses";
 import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -16,7 +17,7 @@ export default function App() {
       <CelestialBackground />
 
       {/* Scattered Floating Celestial Doodles */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden select-none" aria-hidden="true">
+      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden select-none hidden lg:block" aria-hidden="true">
         {/* Galaxy Motif 1 */}
         <img
           alt=""
@@ -89,6 +90,7 @@ export default function App() {
         <Skills />
         <About />
         <Projects />
+        <Glimpses />
         <Achievements />
         <Contact />
       </main>

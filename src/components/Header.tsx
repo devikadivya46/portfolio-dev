@@ -65,6 +65,10 @@ export default function Header() {
     { id: "contact", label: "Contact" },
   ];
 
+  const handleNavClick = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       {/* Scroll-Linked Progress Bar */}
@@ -74,14 +78,15 @@ export default function Header() {
       />
       
       <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center" id="navbar">
+      <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col gap-3" id="navbar">
+        <div className="flex items-center justify-between gap-4">
         <a 
           href="#hero" 
           onClick={(e) => {
             e.preventDefault();
-            document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+            handleNavClick("hero");
           }}
-          className="text-2xl font-bold tracking-tight text-slate-950 dark:text-white font-serif italic group flex items-center gap-1 select-none"
+          className="text-xl sm:text-2xl font-bold tracking-tight text-slate-950 dark:text-white font-serif italic group flex items-center gap-1 select-none"
         >
           Devika.
         </a>
@@ -100,7 +105,7 @@ export default function Header() {
                 href={`#${item.id}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                  handleNavClick(item.id);
                 }}
               >
                 {isActive && (
@@ -126,6 +131,30 @@ export default function Header() {
             {isDark ? "light_mode" : "dark_mode"}
           </span>
         </button>
+        </div>
+
+        <div className="flex md:hidden items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item.id);
+                }}
+                className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-bold font-display transition-colors shrink-0 ${
+                  isActive
+                    ? "bg-white text-[#D84C1B] shadow-sm"
+                    : "bg-white/55 text-slate-600 hover:text-[#D84C1B]"
+                }`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+        </div>
       </nav>
     </header>
     </>

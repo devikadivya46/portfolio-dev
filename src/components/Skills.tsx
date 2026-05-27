@@ -39,8 +39,8 @@ export default function Skills() {
   };
 
   return (
-    <section className="py-24 relative" id="skills">
-      <div className="container mx-auto px-6">
+    <section className="py-20 sm:py-24 relative" id="skills">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           className="mb-16"
           variants={headingContainerVariants}
@@ -49,7 +49,7 @@ export default function Skills() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white mb-4 font-display"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white mb-4 font-display"
             variants={headingItemVariants}
           >
             Skills &amp; Expertise
@@ -63,7 +63,7 @@ export default function Skills() {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
           id="skills-grid"
           variants={containerVariants}
           initial="hidden"
@@ -73,7 +73,7 @@ export default function Skills() {
           {skillCategories.map((category) => (
             <motion.div
               key={category.title}
-              className="neu-card p-10 rounded-3xl group transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
+              className="neu-card p-6 sm:p-8 lg:p-10 rounded-3xl group transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
               variants={cardVariants}
             >
               <div className="flex items-center gap-4 mb-8">

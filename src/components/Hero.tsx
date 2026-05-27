@@ -6,30 +6,30 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen overflow-hidden bg-[#F7F4EF] px-6 py-12"
+      className="relative min-h-screen overflow-hidden bg-[#F7F4EF] px-4 sm:px-6 py-8 sm:py-12"
     >
-      <div className="mx-auto flex min-h-[calc(100vh-6rem)] w-full max-w-7xl items-center">
-        <div className="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-12">
-          <div className="order-2 lg:order-1 lg:col-span-5">
+      <div className="mx-auto flex min-h-[calc(100vh-6rem)] w-full max-w-7xl items-center pt-24 sm:pt-28 lg:pt-0">
+        <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-12">
+          <div className="order-2 lg:order-1 lg:col-span-5 text-center lg:text-left">
             <p className="mb-4 text-sm font-medium tracking-[0.25em] text-[#FF7C00] uppercase">
               Hi, I’m Devika
             </p>
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-[#1C1310] sm:text-5xl lg:text-6xl">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-6xl font-semibold leading-tight text-[#1C1310]">
               A creative designer crafting calm, modern, and thoughtful digital experiences.
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-[#5F5650] sm:text-lg">
+            <p className="mx-auto lg:mx-0 mt-5 max-w-xl text-sm sm:text-base leading-7 text-[#5F5650] sm:text-lg">
               I build clean interfaces with warm visuals, smooth flow, and a strong focus on clarity, usability, and premium detail.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-7 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
               <a
                 href="#projects"
-                className="inline-flex items-center rounded-full bg-gradient-to-br from-[#FF8A4B] to-[#D84C1B] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200/60 transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#FF8A4B] to-[#D84C1B] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200/60 transition-transform hover:-translate-y-0.5"
               >
                 View Work
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center rounded-full border border-[#1C1310]/15 bg-white/60 px-6 py-3 text-sm font-semibold text-[#1C1310] backdrop-blur-sm transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center rounded-full border border-[#1C1310]/15 bg-white/60 px-6 py-3 text-sm font-semibold text-[#1C1310] backdrop-blur-sm transition-transform hover:-translate-y-0.5"
               >
                 Let’s Talk
               </a>
@@ -41,13 +41,13 @@ export default function Hero() {
               initial={{ x: 80, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: 'spring', stiffness: 70, damping: 16, duration: 0.7 }}
-              className="relative w-full max-w-[720px]"
+              className="relative w-full max-w-[640px] lg:max-w-[720px]"
             >
 
               <motion.img
                 src={heroPhoto}
                 alt="Hero portrait"
-                className="h-[74vh] w-full rounded-[28px] object-cover object-center transform scale-[1.06] sm:h-[76vh] lg:h-[82vh]"
+                className="h-[58vh] w-full rounded-[24px] object-cover object-[center_30%] transform scale-[1.03] sm:object-center sm:h-[66vh] lg:h-[82vh]"
                 draggable={false}
                 animate={{ x: [0, 6, 0, -4, 0] }}
                 transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
@@ -59,7 +59,7 @@ export default function Hero() {
                   initial={{ x: 24, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ type: 'spring', stiffness: 60, damping: 14, delay: 0.9 }}
-                  className="absolute right-12 top-20 hidden lg:flex w-[380px] flex-col items-end"
+                  className="absolute right-12 top-20 hidden xl:flex w-[380px] flex-col items-end"
                 >
                   {/* Thin vertical accent */}
                   <div className="absolute -left-4 top-6 h-16 w-0.5 rounded bg-gradient-to-b from-[#D84C1B] to-[#FF8A4B] opacity-90" />
