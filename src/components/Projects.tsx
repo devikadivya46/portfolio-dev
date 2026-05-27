@@ -98,13 +98,20 @@ export default function Projects() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95, y: 1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold font-display transition-colors duration-300 cursor-pointer relative overflow-hidden select-none ${
+                  className={`px-4 py-2.5 rounded-xl text-xs font-bold font-display cursor-pointer relative select-none transition-colors duration-300 ${
                     isActive
-                      ? "bg-solar-orange text-white shadow-neu-primary font-black"
-                      : "text-slate-600 dark:text-slate-300 hover:text-solar-orange bg-slate-50 dark:bg-slate-900/20 hover:bg-slate-100/50 dark:hover:bg-slate-900/40"
+                      ? "text-white"
+                      : "text-slate-600 dark:text-slate-300 hover:text-solar-orange bg-slate-50 dark:bg-slate-900/25 hover:bg-slate-100/50"
                   }`}
                 >
-                  {tech}
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeProjectFilter"
+                      className="absolute inset-0 bg-solar-orange rounded-xl z-0 shadow-md border border-orange-600/10"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{tech}</span>
                 </motion.button>
               );
             })}
@@ -132,7 +139,7 @@ export default function Projects() {
                     
                     {/* Outer Tech Display Symbol */}
                     <div className="aspect-[16/9] overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-900/50 flex items-center justify-center relative shadow-neu-pressed dark:shadow-neu-pressed-dark mb-6">
-                      <span className="material-icons-outlined text-slate-200 dark:text-slate-800 text-9xl absolute opacity-40 select-none">
+                      <span className="material-icons-outlined text-slate-200 dark:text-slate-800 text-9xl absolute opacity-30 select-none transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-700 ease-out">
                         {project.icon}
                       </span>
                       

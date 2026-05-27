@@ -437,38 +437,49 @@ export default function GithubStatsCard({ githubRepo, fallbackStats }: GithubSta
           </span>
         </div>
 
-        {/* Dynamic Tactile Floating Tooltip Bubble */}
+        {/* Dynamic Tactile Floating Tooltip Bubble with horizontal slide alignment */}
         <AnimatePresence>
           {hoveredLanguage && (
             <motion.div
               initial={{ opacity: 0, y: 10, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 5, scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-              className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900/95 dark:bg-slate-950/95 text-white text-[10px] font-bold px-2.5 py-1 rounded-md shadow-lg border border-slate-700/40 flex items-center gap-1.5 z-25 pointer-events-none select-none"
+              transition={{ type: "spring", stiffness: 450, damping: 25 }}
+              style={{ left: `${(hoveredLanguage as any).leftOffset ?? 50}%` }}
+              className="absolute -top-11 -translate-x-1/2 bg-slate-900/95 dark:bg-slate-950/95 text-white text-[10px] font-bold px-2.5 py-1 rounded-md shadow-lg border border-slate-700/40 flex items-center gap-1.5 z-25 pointer-events-none select-none transition-[left] duration-300 ease-out"
             >
               <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: hoveredLanguage.color }} />
               <span>{hoveredLanguage.name}</span>
               <span className="text-slate-300 font-mono font-black">{hoveredLanguage.percentage}%</span>
+              
+              {/* Clean triangular drop-down arrow tip */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-0.5 border-x-4 border-x-transparent border-t-4 border-t-slate-900/95 dark:border-t-slate-950/95" />
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Multi-segmented distribution line bar */}
-        <div className="w-full h-3 rounded-full bg-slate-200/50 dark:bg-slate-800/40 overflow-hidden flex items-stretch">
-          {data.languages.map((lang, index) => (
-            <motion.div
-              key={lang.name}
-              initial={{ width: 0 }}
-              animate={{ width: `${lang.percentage}%` }}
-              transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
-              style={{ backgroundColor: lang.color }}
-              className="h-full first:rounded-l-full last:rounded-r-full hover:scale-y-110 active:scale-y-100 opacity-95 hover:opacity-100 transition-all duration-150 cursor-pointer"
-              onMouseEnter={() => setHoveredLanguage(lang)}
-              onMouseLeave={() => setHoveredLanguage(null)}
-              title={`${lang.name}: ${lang.percentage}%`}
-            />
-          ))}
+        <div className="w-full h-3 rounded-full bg-slate-200/50 dark:bg-slate-800/40 overflow-hidden flex items-stretch relative">
+          {(() => {
+            let cumulative = 0;
+            return data.languages.map((lang, index) => {
+              const leftOffset = cumulative + lang.percentage / 2;
+              cumulative += lang.percentage;
+              return (
+                <motion.div
+                  key={lang.name}
+                  initial={{ width: 0 }}
+                  animate={{ width: `${lang.percentage}%` }}
+                  transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
+                  style={{ backgroundColor: lang.color }}
+                  className="h-full first:rounded-l-full last:rounded-r-full hover:scale-y-110 active:scale-y-100 opacity-95 hover:opacity-100 transition-all duration-150 cursor-pointer"
+                  onMouseEnter={() => setHoveredLanguage({ ...lang, leftOffset } as any)}
+                  onMouseLeave={() => setHoveredLanguage(null)}
+                  title={`${lang.name}: ${lang.percentage}%`}
+                />
+              );
+            });
+          })()}
         </div>
 
         {/* Language labels with badges */}

@@ -6,18 +6,14 @@ import Projects from "./components/Projects";
 import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import CelestialBackground from "./components/CelestialBackground";
 import { MOTIF_BG_DECO, CELESTIAL_DOODLE_RECURRING } from "./data";
 
 export default function App() {
   return (
     <div className="relative min-h-screen text-slate-900 dark:text-slate-100 bg-surface dark:bg-background-dark transition-colors duration-300 font-sans">
-      {/* Fixed Celestial Background Panels */}
-      <div className="celestial-bg" aria-hidden="true" />
-      <div className="nebula-layer animate-pulse-subtle" aria-hidden="true">
-        <div className="nebula-cloud cloud-1" />
-        <div className="nebula-cloud cloud-2" />
-        <div className="nebula-cloud cloud-3" />
-      </div>
+      {/* Dynamic Animated Cosmic/Telemetry Background Layer */}
+      <CelestialBackground />
 
       {/* Scattered Floating Celestial Doodles */}
       <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden select-none" aria-hidden="true">

@@ -151,6 +151,8 @@ export default function Achievements() {
                 {achievements.map((item) => (
                   <motion.div
                     key={item.id}
+                    whileHover={{ scale: 1.05, y: -4 }}
+                    transition={{ type: "spring", stiffness: 350, damping: 20 }}
                     className="p-6 md:p-8 neu-card rounded-2xl border border-transparent hover:border-dashed hover:border-orange-200 transition-all duration-300 flex flex-col justify-between"
                     variants={itemVariants}
                   >
