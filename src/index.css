@@ -102,6 +102,11 @@
     min-height: 100%;
   }
 
+  /* Hide default cursor on desktop — replaced by CustomCursor */
+  @media (pointer: fine) {
+    *, *::before, *::after { cursor: none !important; }
+  }
+
   body {
     font-family: 'Inter', sans-serif;
     background: transparent;

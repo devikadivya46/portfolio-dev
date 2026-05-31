@@ -8,23 +8,55 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen overflow-hidden bg-[#F7F4EF] px-4 sm:px-6 py-8 sm:py-12"
+      className="relative min-h-screen overflow-hidden px-4 sm:px-6 py-8 sm:py-12"
     >
       <div className="mx-auto flex min-h-[calc(100vh-6rem)] w-full max-w-7xl items-center pt-24 sm:pt-28 lg:pt-0">
         <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-12">
 
-          {/* ── Left column (unchanged) ─────────────────────────── */}
+          {/* ── Left column ──────────────────────────────────────── */}
           <div className="order-2 lg:order-1 lg:col-span-5 text-center lg:text-left">
-            <p className="mb-4 text-sm font-medium tracking-[0.25em] text-[#FF7C00] uppercase">
+
+            {/* Label fade-up */}
+            <motion.p
+              className="mb-4 text-sm font-medium tracking-[0.25em] text-[#FF7C00] uppercase"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut" }}
+            >
               Hi, I'm Devika
-            </p>
+            </motion.p>
+
+            {/* Heading — word by word reveal */}
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-6xl font-semibold leading-tight text-[#1C1310]">
-              A creative designer crafting calm, modern, and thoughtful digital experiences.
+              {["A creative designer", "crafting calm,", "modern, and", "thoughtful", "digital", "experiences."].map((chunk, i) => (
+                <motion.span
+                  key={i}
+                  className="inline-block mr-[0.22em]"
+                  style={{ display: "inline-block" }}
+                  initial={{ opacity: 0, y: 28, filter: "blur(5px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.15 + i * 0.1 }}
+                >
+                  {chunk}
+                </motion.span>
+              ))}
             </h1>
-            <p className="mx-auto lg:mx-0 mt-5 max-w-xl text-sm sm:text-base leading-7 text-[#5F5650] sm:text-lg">
+
+            {/* Subtitle */}
+            <motion.p
+              className="mx-auto lg:mx-0 mt-5 max-w-xl text-sm sm:text-base leading-7 text-[#5F5650] sm:text-lg"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.85 }}
+            >
               I build clean interfaces with warm visuals, smooth flow, and a strong focus on clarity, usability, and premium detail.
-            </p>
-            <div className="mt-7 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
+            </motion.p>
+            <motion.div
+              className="mt-7 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 1.05 }}
+            >
               <a
                 href="#projects"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#FF8A4B] to-[#D84C1B] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200/60 transition-transform hover:-translate-y-0.5"
@@ -39,7 +71,7 @@ export default function Hero() {
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
                 Download Resume
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {/* ── Right column ─────────────────────────────────────── */}

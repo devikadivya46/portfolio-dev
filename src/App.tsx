@@ -8,11 +8,12 @@ import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CelestialBackground from "./components/CelestialBackground";
+import CustomCursor from "./components/CustomCursor";
 
 export default function App() {
   return (
     <div className="relative min-h-screen text-slate-900 transition-colors duration-300 font-sans">
-      {/* Dynamic Animated Cosmic/Telemetry Background Layer */}
+      <CustomCursor />
       <CelestialBackground />
 
       {/* Main Layout Elements */}
