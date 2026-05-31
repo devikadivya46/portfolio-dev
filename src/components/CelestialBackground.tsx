@@ -2,116 +2,130 @@ import { motion } from "motion/react";
 
 export default function CelestialBackground() {
   return (
-    <div className="fixed inset-0 z-[-2] pointer-events-none overflow-hidden" aria-hidden="true">
-
-      {/* ── Page base ───────────────────────────────────── */}
+    <div
+      className="fixed inset-0 pointer-events-none overflow-hidden"
+      style={{ zIndex: -1 }}
+      aria-hidden="true"
+    >
+      {/* ── Base warm gradient ───────────────────────── */}
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(145deg,#FFF5EC 0%,#F7F4EF 35%,#F2EBE1 70%,#EDE3D6 100%)"
+        background: "linear-gradient(145deg,#FFF5EC 0%,#F7F2EB 30%,#F2E8DC 65%,#EDE0D2 100%)"
       }} />
 
-      {/* ── TOP-RIGHT large warm glow ───────────────────── */}
+      {/* ── TOP-RIGHT  large orange glow ─────────────── */}
       <motion.div
         className="absolute"
         style={{
-          top: "-120px", right: "-100px",
-          width: "680px", height: "620px",
-          borderRadius: "60% 40% 55% 45% / 50% 58% 42% 50%",
-          background: "radial-gradient(ellipse at 40% 35%,#FFBB80 0%,#FF9B6A 30%,#FFD4A8 60%,transparent 82%)",
-          filter: "blur(72px)",
-          opacity: 0.38,
+          top: "-140px", right: "-120px",
+          width: "720px", height: "660px",
+          borderRadius: "62% 38% 55% 45% / 50% 58% 42% 50%",
+          background: "radial-gradient(ellipse at 38% 32%, #FFB470 0%, #FF9B5A 28%, #FFCF98 58%, transparent 80%)",
+          filter: "blur(60px)",
+          opacity: 0.55,
         }}
-        animate={{ scale: [1, 1.06, 1], rotate: [0, 4, 0] }}
+        animate={{ scale: [1, 1.07, 1], rotate: [0, 5, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* ── BOTTOM-LEFT large peach glow ────────────────── */}
+      {/* ── BOTTOM-LEFT peach glow ───────────────────── */}
       <motion.div
         className="absolute"
         style={{
-          bottom: "-100px", left: "-80px",
-          width: "600px", height: "550px",
-          borderRadius: "45% 55% 40% 60% / 55% 45% 55% 45%",
-          background: "radial-gradient(ellipse at 55% 55%,#FFCFA8 0%,#FFB88A 35%,#FFD8BA 65%,transparent 84%)",
-          filter: "blur(80px)",
-          opacity: 0.32,
+          bottom: "-120px", left: "-100px",
+          width: "660px", height: "600px",
+          borderRadius: "45% 55% 42% 58% / 55% 45% 55% 45%",
+          background: "radial-gradient(ellipse at 55% 55%, #FFCA98 0%, #FFB47A 32%, #FFD8B0 62%, transparent 82%)",
+          filter: "blur(70px)",
+          opacity: 0.5,
         }}
-        animate={{ scale: [1, 1.08, 1], x: [0, 20, 0] }}
+        animate={{ scale: [1, 1.09, 1], x: [0, 22, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
 
-      {/* ── CENTER-RIGHT mid blob ───────────────────────── */}
+      {/* ── CENTER-RIGHT mid blob ────────────────────── */}
       <motion.div
         className="absolute"
         style={{
-          top: "38%", right: "-60px",
-          width: "420px", height: "400px",
+          top: "36%", right: "-80px",
+          width: "480px", height: "440px",
           borderRadius: "55% 45% 60% 40% / 48% 52% 48% 52%",
-          background: "radial-gradient(ellipse at 45% 45%,#FFD0A0 0%,#FFBE88 45%,transparent 76%)",
-          filter: "blur(60px)",
-          opacity: 0.26,
+          background: "radial-gradient(ellipse at 44% 44%, #FFCF96 0%, #FFB87A 42%, transparent 74%)",
+          filter: "blur(56px)",
+          opacity: 0.42,
         }}
-        animate={{ y: [0, -30, 0], scale: [1, 1.04, 1] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+        animate={{ y: [0, -35, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 4 }}
       />
 
-      {/* ── TOP-LEFT soft accent ─────────────────────────── */}
+      {/* ── TOP-LEFT warm accent ─────────────────────── */}
       <motion.div
         className="absolute"
         style={{
-          top: "8%", left: "-40px",
-          width: "350px", height: "320px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle,#FFE4C4 0%,#FFCFA8 40%,transparent 72%)",
-          filter: "blur(64px)",
-          opacity: 0.22,
+          top: "6%", left: "-60px",
+          width: "400px", height: "360px",
+          borderRadius: "50% 50% 44% 56% / 52% 48% 52% 48%",
+          background: "radial-gradient(circle, #FFE0BC 0%, #FFD09A 38%, transparent 70%)",
+          filter: "blur(60px)",
+          opacity: 0.38,
         }}
-        animate={{ y: [0, 24, 0], scale: [1, 1.05, 1] }}
+        animate={{ y: [0, 28, 0], scale: [1, 1.06, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 6 }}
       />
 
-      {/* ── BOTTOM-RIGHT warm glow ──────────────────────── */}
+      {/* ── BOTTOM-RIGHT warm blob ───────────────────── */}
       <motion.div
         className="absolute"
         style={{
-          bottom: "12%", right: "5%",
-          width: "380px", height: "340px",
+          bottom: "10%", right: "4%",
+          width: "420px", height: "380px",
           borderRadius: "42% 58% 52% 48% / 56% 44% 56% 44%",
-          background: "radial-gradient(ellipse at 50% 50%,#FFCA94 0%,#FFB070 38%,transparent 72%)",
-          filter: "blur(68px)",
-          opacity: 0.2,
+          background: "radial-gradient(ellipse at 50% 50%, #FFCC90 0%, #FFB468 36%, transparent 70%)",
+          filter: "blur(64px)",
+          opacity: 0.34,
         }}
-        animate={{ scale: [1, 1.07, 1], rotate: [0, -5, 0] }}
+        animate={{ scale: [1, 1.08, 1], rotate: [0, -6, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 8 }}
       />
 
-      {/* ── Subtle dot grid ────────────────────────────── */}
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: "radial-gradient(circle,#7C4A1E 1px,transparent 1px)",
-        backgroundSize: "28px 28px",
+      {/* ── CENTER large ambient blob ────────────────── */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "58%", left: "25%",
+          width: "500px", height: "420px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, #FFD4A0 0%, #FFC07C 30%, transparent 68%)",
+          filter: "blur(80px)",
+          opacity: 0.25,
+        }}
+        animate={{ scale: [1, 1.1, 1], y: [0, -20, 0] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 10 }}
+      />
+
+      {/* ── Dot grid ─────────────────────────────────── */}
+      <div className="absolute inset-0 opacity-[0.045]" style={{
+        backgroundImage: "radial-gradient(circle, #7C4A1E 1px, transparent 1px)",
+        backgroundSize: "26px 26px",
       }} />
 
-      {/* ── Very faint diagonal lines ──────────────────── */}
-      <div className="absolute inset-0 opacity-[0.015]" style={{
-        backgroundImage: "repeating-linear-gradient(135deg,#FF7C00 0px,#FF7C00 1px,transparent 1px,transparent 48px)",
-      }} />
-
-      {/* ── Floating warm micro-dots ───────────────────── */}
-      {[
-        { top: "22%", left: "8%",  size: 5, delay: 0   },
-        { top: "55%", left: "4%",  size: 4, delay: 1.5 },
-        { top: "78%", left: "14%", size: 6, delay: 3   },
-        { top: "15%", right: "18%",size: 4, delay: 0.8 },
-        { top: "45%", right: "8%", size: 5, delay: 2.2 },
-        { top: "70%", right: "22%",size: 3, delay: 4   },
-        { top: "32%", left: "18%", size: 3, delay: 1   },
-        { top: "88%", right: "12%",size: 4, delay: 2.8 },
-      ].map((dot, i) => (
+      {/* ── Pulsing orange accent dots ───────────────── */}
+      {([
+        { top: "18%",  left:  "7%",  s: 6, d: 0   },
+        { top: "52%",  left:  "3%",  s: 5, d: 1.4 },
+        { top: "80%",  left:  "12%", s: 7, d: 3   },
+        { top: "12%",  right: "14%", s: 5, d: 0.7 },
+        { top: "42%",  right: "7%",  s: 6, d: 2   },
+        { top: "72%",  right: "18%", s: 4, d: 4   },
+        { top: "30%",  left:  "22%", s: 4, d: 1   },
+        { top: "90%",  right: "10%", s: 5, d: 2.6 },
+        { top: "65%",  left:  "40%", s: 3, d: 3.5 },
+      ] as Array<{top:string;left?:string;right?:string;s:number;d:number}>).map((dot, i) => (
         <motion.div
           key={i}
           className="absolute rounded-full bg-[#FF8A4B]"
-          style={{ ...dot, width: dot.size, height: dot.size, opacity: 0 } as React.CSSProperties}
-          animate={{ opacity: [0.12, 0.45, 0.12], scale: [0.8, 1.3, 0.8] }}
-          transition={{ duration: 3 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: dot.delay }}
+          style={{ top: dot.top, left: dot.left, right: dot.right, width: dot.s, height: dot.s }}
+          animate={{ opacity: [0.15, 0.55, 0.15], scale: [0.8, 1.4, 0.8] }}
+          transition={{ duration: 3.2 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: dot.d }}
         />
       ))}
 

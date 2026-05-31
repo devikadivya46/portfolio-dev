@@ -11,7 +11,7 @@ import CelestialBackground from "./components/CelestialBackground";
 
 export default function App() {
   return (
-    <div className="relative min-h-screen text-slate-900 dark:text-slate-100 bg-surface dark:bg-background-dark transition-colors duration-300 font-sans">
+    <div className="relative min-h-screen text-slate-900 transition-colors duration-300 font-sans">
       {/* Dynamic Animated Cosmic/Telemetry Background Layer */}
       <CelestialBackground />
 

@@ -97,9 +97,14 @@
 
 
 @layer base {
+  html {
+    background: linear-gradient(145deg, #FFF5EC 0%, #F7F2EB 35%, #F2EAE0 70%, #EDE3D6 100%);
+    min-height: 100%;
+  }
+
   body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--color-warm-alabaster);
+    background: transparent;
     color: var(--color-on-background);
     position: relative;
     overflow-x: hidden;
