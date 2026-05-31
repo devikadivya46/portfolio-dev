@@ -135,28 +135,16 @@ export default function Header() {
           })}
         </div>
 
-        <div className="flex items-center gap-2">
-          <button
-            id="dark-light-toggle"
-            aria-label="Toggle dark mode"
-            className="w-10 h-10 flex items-center justify-center rounded-full neu-btn-flat text-slate-600 dark:text-slate-300"
-            onClick={toggleDarkMode}
-          >
-            <span className="material-icons-outlined text-xl">
-              {isDark ? "light_mode" : "dark_mode"}
-            </span>
-          </button>
-          {/* Hamburger — mobile only */}
-          <button
-            className="md:hidden w-10 h-10 flex items-center justify-center rounded-full neu-btn-flat text-slate-600 dark:text-slate-300"
-            aria-label="Toggle menu"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <span className="material-icons-outlined text-xl">
-              {isMenuOpen ? "close" : "menu"}
-            </span>
-          </button>
-        </div>
+        {/* Menu button — all screen sizes */}
+        <button
+          className="w-10 h-10 flex items-center justify-center rounded-full neu-btn-flat text-[#1C1310]"
+          aria-label="Toggle menu"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <span className="material-icons-outlined text-xl">
+            {isMenuOpen ? "close" : "menu"}
+          </span>
+        </button>
         </div>
 
       </nav>
