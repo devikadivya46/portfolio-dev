@@ -1,14 +1,28 @@
-import { 
-  SkillCategory, 
-  ProjectItem, 
-  AchievementItem, 
-  ExperienceItem, 
-  EducationItem, 
-  CertificationItem, 
-  ExtracurricularItem, 
-  LanguageItem, 
-  SocialLink 
+import {
+  SkillCategory,
+  ProjectItem,
+  AchievementItem,
+  ExperienceItem,
+  EducationItem,
+  CertificationItem,
+  PortfolioDocumentItem,
+  ExtracurricularItem,
+  LanguageItem,
+  SocialLink,
+  JourneyMilestone
 } from "./types";
+import nptelThumb from "./assets/images/cert-previews/nptel-java.png";
+import astrixThumb from "./assets/images/cert-previews/astrix-2026.png";
+import aiToolsThumb from "./assets/images/cert-previews/generative-ai-tools.png";
+import skillcraftThumb from "./assets/images/cert-previews/skillcraft-offer-letter.png";
+import futureInternsThumb from "./assets/images/cert-previews/future-interns-offer-letter.png";
+import anvesanaThumb from "./assets/images/cert-previews/anvesana-onboard.png";
+import aiSessionThumb from "./assets/images/cert-previews/ai-expert-session.png";
+import ideaWorkshopThumb from "./assets/images/cert-previews/idea-gen-workshop.png";
+import blindBotThumb from "./assets/images/cert-previews/blind-bot-battle.png";
+import cyberCadetThumb from "./assets/images/cert-previews/cyber-cadet.png";
+import excelrThumb from "./assets/images/cert-previews/excelr-iot.png";
+import infosysThumb from "./assets/images/cert-previews/python-infosys-1.png";
 
 export const MOTIF_BG_DECO = "https://lh3.googleusercontent.com/aida-public/AB6AXuBeLxEl-O9wbY0dUk_FpZgnFVxhwlWnYAaymt5-r4Diz7fw-ynGSNLkwCUCRPn9cMCsNxXHox0PTkizsbAVcgy7Lh-BHu9y-pXC7qQf7zooQSK95XaU6zqmBtK-WccAS4gciRKt5SopsbdZ8cNg4wdHiZdjr4IxZpkFITwO5OHepVnyBAPMrqBCqBP_Qj9G54CgsE7CQsqwi9o2aYm1zGaqtuLse_Zi2OggHYmWXe0j09FDWWzZmstpl_hg6PsMQYr6Owiqn8-7dX4";
 export const CELESTIAL_DOODLE_RECURRING = "https://lh3.googleusercontent.com/aida/ADBb0uiUMkm7ex_ojNd6C0M7xJKdHQG7a7yyZJP6h-gDJvu7xJSw7QULMX3BT2GhFusIUBx6qN7XUaVcPxS6wxr2FEmZDvUwwLgSv0GZO19ilGkIfLMKLUdBksWcGNCbmfTrhlh9T-RV7kt3npB4nNWMKKIkv-Oe8LcQZ7q2UfZCSCqNiY5cYwr8PeaLmQ7K3BW7TTMxyOPrAefhR2D8SyJ5-1uEsrQuvYAlXVfO02lwY7wCvIxFXuFiXh4l_Q";
@@ -47,10 +61,15 @@ export const projects: ProjectItem[] = [
     id: "clenorx",
     title: "ClenorX Foundation",
     category: "Financial Literacy NGO Platform",
+    tagline: "An NGO web platform bridging financial literacy to underserved communities across rural Karnataka.",
     description: "Designed and built a full-stack NGO platform empowering children and SHGs in rural Karnataka with financial literacy education.",
     bullets: [
       "Designed and built a full-stack NGO platform empowering children and SHGs in rural Karnataka with financial literacy education, featuring volunteer registration, donation portal, and contact system.",
       "Deployed live on Vercel with mobile-responsive design, reaching an estimated 500+ students and SHG members across Tier-3 cities in Karnataka."
+    ],
+    tradeoffs: [
+      "Chose Vercel static hosting over AWS to eliminate DevOps overhead entirely, trading infrastructure control for zero-config deployment velocity on a volunteer-run NGO budget.",
+      "Opted for static generation over SSR to minimise hosting costs on mostly-static NGO content, accepting a content freshness window in exchange for free-tier performance."
     ],
     year: "2025",
     icon: "language",
@@ -70,10 +89,15 @@ export const projects: ProjectItem[] = [
     id: "anvesync",
     title: "Anvesync",
     category: "Workforce Management Platform",
+    tagline: "A role-based HR platform with location-aware attendance, leave workflows, and admin analytics dashboards.",
     description: "Built a full-stack HR platform featuring employee record-keeping, multi-role state access, and interactive admin dashboards.",
     bullets: [
       "Built a full-stack HR platform featuring employee records, location-aware attendance, leave management, and admin analytics dashboards with role-based access control (Admin / Manager / Employee).",
       "Implemented secure Next.js API routes backed by Prisma ORM and PostgreSQL, enabling scalable multi-role data access for HR teams."
+    ],
+    tradeoffs: [
+      "Chose PostgreSQL over MongoDB for relational HR data to enforce ACID compliance across multi-role transactions, accepting schema migration complexity as the data model evolves.",
+      "Used Prisma ORM for end-to-end type-safety across all DB calls, accepting a slight runtime overhead versus raw parameterised SQL in exchange for compile-time query validation."
     ],
     year: "2026",
     icon: "hub",
@@ -86,6 +110,31 @@ export const projects: ProjectItem[] = [
       stars: 8,
       forks: 2,
       languages: { "TypeScript": 72, "CSS": 18, "HTML": 10 }
+    }
+  },
+  {
+    id: "agentvisionx",
+    title: "AgentVisionX",
+    category: "AI Agent Orchestration Platform",
+    tagline: "Next-gen AI agent coordination with real-time vision pipelines and autonomous task orchestration.",
+    description: "A next-generation multi-agent coordination system with real-time computer vision pipelines, autonomous task planning, and live dashboard monitoring for enterprise AI workflows.",
+    bullets: [
+      "Architected a multi-agent orchestration layer supporting concurrent vision-pipeline tasks with real-time WebSocket streaming to a live monitoring dashboard, achieving sub-200ms task dispatch latency.",
+      "Implemented priority-aware task queuing, fallback routing, and per-agent health telemetry to sustain 99.9% task completion rates across distributed agent workloads."
+    ],
+    tradeoffs: [
+      "Chose persistent WebSocket streams over REST polling for sub-100ms agent-to-dashboard latency, accepting increased server-side connection state and horizontal scaling complexity.",
+      "Enforced TypeScript strict mode end-to-end across all agent contract boundaries, accepting verbose generic constraints in exchange for zero runtime type surprises on agent payloads."
+    ],
+    year: "2025",
+    icon: "smart_toy",
+    imageAlt: "AI agent coordination network visualization",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "WebSockets"],
+    githubRepo: "devikadivya46/agentvisionx",
+    fallbackStats: {
+      stars: 15,
+      forks: 6,
+      languages: { "TypeScript": 78, "CSS": 14, "JavaScript": 8 }
     }
   },
 ];
@@ -116,16 +165,30 @@ export const achievements: AchievementItem[] = [
 
 export const experiences: ExperienceItem[] = [
   {
+    id: "skillcraft",
+    role: "Prompt Engineering Intern",
+    companyName: "SkillCraft Technology",
+    duration: "Dec 2025 (1 month)",
+    location: "Remote",
+    bullets: [
+      "Engineered and refined prompt architectures for large language models, optimizing response quality, instruction-following, and output consistency across task categories.",
+      "Documented prompt design patterns and conducted comparative evaluations to benchmark prompt strategies for educational and productivity workflows."
+    ],
+    logoInitials: "SC",
+    documentHref: docPath("Offer Letter.pdf")
+  },
+  {
     id: "future-intern",
     role: "Full Stack Web Developer Intern",
-    companyName: "Future Intern",
-    duration: "May 2025 – Jul 2025",
+    companyName: "Future Interns",
+    duration: "Aug 2025 – Sep 2025",
     location: "Remote",
     bullets: [
       "Developed and deployed responsive web applications using React.js and Node.js, building reusable UI components and MongoDB-backed REST APIs across multiple client projects.",
       "Contributed to version control workflows using Git, maintaining a clean, maintainable component architecture and participating in code reviews."
     ],
-    logoInitials: "FI"
+    logoInitials: "FI",
+    documentHref: docPath("DEVIKA S.N Offer Letter.pdf")
   }
 ];
 
@@ -153,17 +216,110 @@ export const educationList: EducationItem[] = [
   }
 ];
 
+export const portfolioDocuments: PortfolioDocumentItem[] = [
+  {
+    title: "NPTEL Elite — Programming in Java",
+    href: docPath("NPTEL26CS36S86550020804471536.pdf"),
+    category: "Certification · IIT Kharagpur · 92%"
+  },
+  {
+    title: "Generative AI Tools Workshop",
+    href: docPath("Devika S.n_Generative AI Tools.pdf"),
+    category: "Certification · Skill Nation · Feb 2026"
+  },
+  {
+    title: "Cyber Cadet — Cyber Safety & Hygiene Assessment",
+    href: docPath("cybcadet_002882_DevikaSN (1).pdf"),
+    category: "Certification · ISEA / MeitY · 90%"
+  },
+  {
+    title: "Internet of Things (IoT) — 30h Live Training",
+    href: docPath("EXCELR-113276-Devika S N (1) (1).pdf"),
+    category: "Certification · ExcelR EdTech · Apr 2025"
+  },
+  {
+    title: "ASTRIX 2026 — Certificate of Appreciation",
+    href: docPath("ASTRIX_2026_Certificate_Devika_S_N.pdf"),
+    category: "Achievement · ASTRA Club · PESITM"
+  },
+  {
+    title: "SkillCraft Technology — Internship Offer Letter",
+    href: docPath("Offer Letter.pdf"),
+    category: "Internship · Prompt Engineering · Dec 2025"
+  },
+  {
+    title: "Future Interns — Internship Offer Letter",
+    href: docPath("DEVIKA S.N Offer Letter.pdf"),
+    category: "Internship · Full Stack Web Dev · Aug–Sep 2025"
+  },
+  {
+    title: "Anvesana Campus Ambassador — Onboard Letter",
+    href: docPath("Devika.pdf"),
+    category: "Extracurricular · Anvesana TBI · Aug 2025"
+  },
+  {
+    title: "Blind Bot Battle — Certificate of Participation",
+    href: docPath("Certificate 15.pdf"),
+    category: "Event · IEEE JNNCE · Anveshana 2025"
+  },
+  {
+    title: "Anvesana AI Expert Session — Participation",
+    href: docPath("Devika S.N.pdf"),
+    category: "Event · Anvesana Forum · Oct 2025"
+  },
+  {
+    title: "Idea Generation Workshop — Participation",
+    href: docPath("Devika S.N (1).pdf"),
+    category: "Workshop · Anvesana Forum · Oct 2025"
+  },
+  {
+    title: "Python Fundamentals Part 1 — Infosys Springboard",
+    href: docPath("1-ee608d4d-767e-4452-8398-7298fd0cd36f.pdf"),
+    category: "Certification · Infosys Springboard · Jan 2025"
+  },
+  {
+    title: "Python Fundamentals Part 2 — Infosys Springboard",
+    href: docPath("1-d1a6064e-9730-4e49-b912-a84dc0ae9422.pdf"),
+    category: "Certification · Infosys Springboard · Jan 2025"
+  },
+  {
+    title: "Basics of Python — Infosys Springboard",
+    href: docPath("1-2e20f76c-512b-47d6-8a15-252baa63010b.pdf"),
+    category: "Certification · Infosys Springboard · Nov 2024"
+  }
+];
+
+function docPath(fileName: string) {
+  return `/documents/${fileName}`;
+}
+
 export const certifications: CertificationItem[] = [
   {
-    title: "NPTEL Elite Gold — Programming in Java",
-    issuer: "NPTEL (IIT Madras)"
+    title: "NPTEL Elite — Programming in Java",
+    issuer: "NPTEL · IIT Kharagpur · 92%",
+    link: docPath("NPTEL26CS36S86550020804471536.pdf")
+  },
+  {
+    title: "Generative AI Tools",
+    issuer: "Skill Nation · Feb 2026",
+    link: docPath("Devika S.n_Generative AI Tools.pdf")
+  },
+  {
+    title: "Cyber Cadet — Cyber Safety & Hygiene Assessment",
+    issuer: "ISEA / MeitY (Govt. of India) · 90%",
+    link: docPath("cybcadet_002882_DevikaSN (1).pdf")
+  },
+  {
+    title: "Internet of Things (IoT) — 30h Live Training",
+    issuer: "ExcelR EdTech · Apr 2025",
+    link: docPath("EXCELR-113276-Devika S N (1) (1).pdf")
   },
   {
     title: "Python (Basic)",
     issuer: "HackerRank"
   },
   {
-    title: "Python Foundation",
+    title: "Python Foundation (Parts 1, 2 & Basics)",
     issuer: "Infosys Springboard"
   }
 ];
@@ -173,13 +329,19 @@ export const extracurriculars: ExtracurricularItem[] = [
     role: "Campus Ambassador",
     organization: "Anvesana Innovation & Entrepreneurial Forum",
     duration: "Aug 2025 – Present",
-    description: "Organised 4+ technical events and workshops with 30+ highly-engaged student participants."
+    description: "Selected as Campus Ambassador to promote entrepreneurship at PESITM. Organised 4+ technical events and workshops including 'Idea Generation' (Oct 2025) and facilitated an AI expert session by Mr. Guru Nadiger, CPTO & Co-Founder, Latitude Health, USA."
   },
   {
-    role: "Core Member",
-    organization: "ASTRA Club",
-    duration: "Active",
-    description: "Coordinated competitive coding sessions, practical project activities, and peer mentorship programmes and workshops."
+    role: "Core Member & Event Organizer",
+    organization: "ASTRA Club · PESITM",
+    duration: "Active / May 2026",
+    description: "Coordinated competitive coding sessions, peer mentorship, and project workshops. Served as Organizer/Core Member at ASTRIX 2026 – The Buildverse, a two-day inter-college innovation challenge showcasing creativity, problem-solving, and technological excellence at PESITM."
+  },
+  {
+    role: "Participant — Blind Bot Battle",
+    organization: "IEEE JNNCE · Anveshana 2025",
+    duration: "2025",
+    description: "Participated in the Blind Bot Battle event organized by the Department of CS&E, JNNCE in association with IEEE JNNCE Student Branch & IEEE Mangalore Subsection under the banner of Anveshana 2025."
   }
 ];
 
@@ -187,6 +349,144 @@ export const languages: LanguageItem[] = [
   { name: "English", proficiency: "Fluent", percentage: 95 },
   { name: "Kannada", proficiency: "Native / Mother Tongue", percentage: 100 },
   { name: "Hindi", proficiency: "Conversational / Fluent", percentage: 70 }
+];
+
+export const journeyMilestones: JourneyMilestone[] = [
+  {
+    id: "nptel-java",
+    title: "NPTEL Elite — Programming in Java",
+    organization: "IIT Kharagpur · NPTEL",
+    date: "Jan – Apr 2026",
+    type: "certification",
+    badge: "92%",
+    icon: "workspace_premium",
+    imageSrc: nptelThumb,
+    imageAlt: "Certificate preview for NPTEL programming in Java",
+    linkHref: docPath("NPTEL26CS36S86550020804471536.pdf")
+  },
+  {
+    id: "astrix-2026",
+    title: "ASTRIX 2026 — Appreciation Certificate",
+    organization: "ASTRA Club · PESITM",
+    date: "May 2–3, 2026",
+    type: "achievement",
+    badge: "Appreciation",
+    icon: "rocket_launch",
+    imageSrc: astrixThumb,
+    imageAlt: "Certificate preview for ASTRIX 2026 appreciation",
+    linkHref: docPath("ASTRIX_2026_Certificate_Devika_S_N.pdf")
+  },
+  {
+    id: "gen-ai-tools",
+    title: "Generative AI Tools Workshop",
+    organization: "Skill Nation",
+    date: "Feb 8, 2026",
+    type: "certification",
+    icon: "auto_awesome",
+    imageSrc: aiToolsThumb,
+    imageAlt: "Certificate preview for Generative AI Tools workshop",
+    linkHref: docPath("Devika S.n_Generative AI Tools.pdf")
+  },
+  {
+    id: "skillcraft-intern",
+    title: "Prompt Engineering Intern",
+    organization: "SkillCraft Technology",
+    date: "Dec 2025",
+    type: "internship",
+    icon: "psychology",
+    imageSrc: skillcraftThumb,
+    imageAlt: "Certificate preview for SkillCraft Technology internship",
+    linkHref: docPath("Offer Letter.pdf")
+  },
+  {
+    id: "future-interns-intern",
+    title: "Full Stack Web Dev Intern",
+    organization: "Future Interns",
+    date: "Aug – Sep 2025",
+    type: "internship",
+    icon: "code",
+    imageSrc: futureInternsThumb,
+    imageAlt: "Certificate preview for Future Interns internship",
+    linkHref: docPath("DEVIKA S.N Offer Letter.pdf")
+  },
+  {
+    id: "campus-ambassador",
+    title: "Campus Ambassador",
+    organization: "Anvesana Innovation & Entrepreneurial Forum",
+    date: "Aug 2025 – Present",
+    type: "achievement",
+    icon: "stars",
+    imageSrc: anvesanaThumb,
+    imageAlt: "Certificate preview for campus ambassador milestone",
+    linkHref: docPath("Devika.pdf")
+  },
+  {
+    id: "ai-expert-session",
+    title: "Beyond Algorithms — AI Expert Session",
+    organization: "Anvesana Forum · Mr. Guru Nadiger, CPTO",
+    date: "Oct 16, 2025",
+    type: "event",
+    icon: "lightbulb",
+    imageSrc: aiSessionThumb,
+    imageAlt: "Certificate preview for AI expert session",
+    linkHref: docPath("Devika S.N.pdf")
+  },
+  {
+    id: "idea-gen-workshop",
+    title: "Idea Generation Workshop",
+    organization: "Anvesana Forum · PESITM",
+    date: "Oct 17, 2025",
+    type: "event",
+    icon: "emoji_objects",
+    imageSrc: ideaWorkshopThumb,
+    imageAlt: "Certificate preview for idea generation workshop",
+    linkHref: docPath("Devika S.N (1).pdf")
+  },
+  {
+    id: "blind-bot-battle",
+    title: "Blind Bot Battle — Anveshana 2025",
+    organization: "IEEE JNNCE",
+    date: "2025",
+    type: "event",
+    icon: "smart_toy",
+    imageSrc: blindBotThumb,
+    imageAlt: "Certificate preview for Blind Bot Battle participation",
+    linkHref: docPath("Certificate 15.pdf")
+  },
+  {
+    id: "cyber-cadet",
+    title: "Cyber Cadet — Cyber Safety Assessment",
+    organization: "ISEA / MeitY · Govt. of India",
+    date: "Apr 5, 2025",
+    type: "certification",
+    badge: "90%",
+    icon: "security",
+    imageSrc: cyberCadetThumb,
+    imageAlt: "Certificate preview for Cyber Cadet assessment",
+    linkHref: docPath("cybcadet_002882_DevikaSN (1).pdf")
+  },
+  {
+    id: "iot-training",
+    title: "Internet of Things (IoT) — 30h Live Training",
+    organization: "ExcelR EdTech",
+    date: "Mar – Apr 2025",
+    type: "certification",
+    icon: "device_hub",
+    imageSrc: excelrThumb,
+    imageAlt: "Certificate preview for IoT training",
+    linkHref: docPath("EXCELR-113276-Devika S N (1) (1).pdf")
+  },
+  {
+    id: "python-infosys",
+    title: "Python Foundation (Parts 1, 2 & Basics)",
+    organization: "Infosys Springboard",
+    date: "Nov 2024 – Jan 2025",
+    type: "certification",
+    icon: "terminal",
+    imageSrc: infosysThumb,
+    imageAlt: "Certificate preview for Python foundation learning",
+    linkHref: docPath("1-ee608d4d-767e-4452-8398-7298fd0cd36f.pdf")
+  }
 ];
 
 export const socialLinks: SocialLink[] = [

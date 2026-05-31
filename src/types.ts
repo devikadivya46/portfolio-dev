@@ -8,8 +8,10 @@ export interface ProjectItem {
   id: string;
   title: string;
   category: string;
+  tagline?: string;
   description: string;
   bullets: string[];
+  tradeoffs?: string[];
   year: string;
   icon: string;
   imageAlt: string;
@@ -41,6 +43,7 @@ export interface ExperienceItem {
   location: string;
   bullets: string[];
   logoInitials: string;
+  documentHref?: string;
 }
 
 export interface EducationItem {
@@ -55,6 +58,12 @@ export interface CertificationItem {
   title: string;
   issuer: string;
   link?: string;
+}
+
+export interface PortfolioDocumentItem {
+  title: string;
+  href: string;
+  category: string;
 }
 
 export interface ExtracurricularItem {
@@ -74,4 +83,17 @@ export interface SocialLink {
   name: string;
   iconSrc: string;
   url: string;
+}
+
+export interface JourneyMilestone {
+  id: string;
+  title: string;
+  organization: string;
+  date: string;
+  type: "internship" | "certification" | "event" | "achievement";
+  badge?: string;
+  icon: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  linkHref?: string;
 }

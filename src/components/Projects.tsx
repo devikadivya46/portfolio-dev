@@ -1,226 +1,241 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { projects, PORTFOLIO_DOODLE_HEADER } from "../data";
-import GithubStatsCard from "./GithubStatsCard";
+import { projects } from "../data";
+import { ProjectItem } from "../types";
+import ProjectDetailModal from "./ProjectDetailModal";
+
+const ArrowRightIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+  </svg>
+);
+
+const headingVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.13 } },
+} as const;
+
+const headingItemVariants = {
+  hidden: { y: 30, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { type: "spring" as const, stiffness: 80, damping: 15 } },
+} as const;
+
+/* ── Icon area gradient config per project (by index) ──────── */
+const cardGradients = [
+  "from-orange-50 to-amber-50 dark:from-orange-950/20 dark:to-amber-950/10",
+  "from-slate-50 to-blue-50/30 dark:from-slate-900/40 dark:to-blue-950/10",
+  "from-violet-50/40 to-indigo-50/30 dark:from-violet-950/15 dark:to-indigo-950/10",
+];
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
-  const headingContainerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
+  const filterOptions = [
+    "All",
+    ...Array.from(new Set(projects.flatMap((p) => p.techStack))),
+  ];
 
-  const headingItemVariants = {
-    hidden: { y: 35, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 80, damping: 15 },
-    },
-  };
-
-  const projectCardVariants = (delay: number) => ({
-    hidden: { y: 40, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 70,
-        damping: 14,
-        delay,
-      },
-    },
-  });
-
-  // Calculate unique filters dynamically from standard project data tech stacks
-  const filterOptions = ["All", ...Array.from(new Set(projects.flatMap((p) => p.techStack)))];
-
-  const filteredProjects = activeFilter === "All"
-    ? projects
-    : projects.filter((project) => project.techStack.includes(activeFilter));
+  const filteredProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((p) => p.techStack.includes(activeFilter));
 
   return (
-    <section className="py-20 sm:py-24 lg:py-32 relative" id="projects">
-      <div className="container mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <motion.div
-          className="mb-12 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8"
-          variants={headingContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <div className="flex flex-col items-start">
-            <motion.span
-              className="inline-block bg-orange-100 dark:bg-orange-900/30 text-solar-orange px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4 shadow-neu-btn font-display select-none"
-              variants={headingItemVariants}
-            >
-              Client &amp; Personal Works
-            </motion.span>
-            <motion.h2
-              className="text-4xl sm:text-5xl md:text-8xl font-bold max-w-4xl leading-tight text-slate-800 dark:text-white tracking-tight font-display"
-              variants={headingItemVariants}
-            >
-              Crafting digital tools with impact.
-            </motion.h2>
-          </div>
+    <>
+      <section className="py-20 sm:py-24 lg:py-32 relative" id="projects">
+        <div className="container mx-auto px-4 sm:px-6">
+
+          {/* ── Section header ───────────────────────────────────── */}
           <motion.div
-            className="hidden md:block"
-            variants={headingItemVariants}
+            className="mb-12 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6"
+            variants={headingVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
-            <img
-              alt="Character holding a board doodle"
-              className="w-40 h-40 object-contain transform -rotate-6 hover:rotate-0 transition-transform duration-500 select-none pointer-events-none"
-              src={PORTFOLIO_DOODLE_HEADER}
-              referrerPolicy="no-referrer"
-            />
+            <div className="flex flex-col items-start">
+              <motion.span
+                variants={headingItemVariants}
+                className="inline-block bg-orange-100 dark:bg-orange-900/30 text-solar-orange px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4 shadow-neu-btn font-display select-none"
+              >
+                Client &amp; Personal Works
+              </motion.span>
+              <motion.h2
+                variants={headingItemVariants}
+                className="text-3xl sm:text-4xl font-serif font-bold text-slate-800 dark:text-white"
+              >
+                Selected Projects
+              </motion.h2>
+              <motion.p
+                variants={headingItemVariants}
+                className="mt-3 text-sm text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed"
+              >
+                Click <span className="font-semibold text-solar-orange">Explore Deep Dive</span> on any card for architecture details, GitHub telemetry, and trade-off analysis.
+              </motion.p>
+            </div>
           </motion.div>
-        </motion.div>
 
-        {/* Dynamic Tech Filter Row */}
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-12 sm:mb-16 py-4 px-4 sm:px-6 neu-card rounded-2xl">
-          <span className="text-[10px] uppercase tracking-widest text-slate-400 dark:text-slate-500 font-extrabold font-display">
-            Filter:
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {filterOptions.map((tech) => {
-              const isActive = activeFilter === tech;
-              return (
-                <motion.button
-                  key={tech}
-                  onClick={() => setActiveFilter(tech)}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95, y: 1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                  className={`px-4 py-2.5 rounded-xl text-xs font-bold font-display cursor-pointer relative select-none transition-colors duration-300 ${
-                    isActive
-                      ? "text-white"
-                      : "text-slate-600 dark:text-slate-300 hover:text-solar-orange bg-slate-50 dark:bg-slate-900/25 hover:bg-slate-100/50"
-                  }`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeProjectFilter"
-                      className="absolute inset-0 bg-solar-orange rounded-xl z-0 shadow-md border border-orange-600/10"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{tech}</span>
-                </motion.button>
-              );
-            })}
+          {/* ── Filter row ───────────────────────────────────────── */}
+          <div className="flex flex-wrap items-center gap-3 mb-12 sm:mb-16 py-4 px-4 sm:px-5 neu-card rounded-2xl">
+            <span className="text-[9px] uppercase tracking-widest text-slate-400 dark:text-slate-500 font-extrabold font-display shrink-0">
+              Filter:
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {filterOptions.map((tech) => {
+                const isActive = activeFilter === tech;
+                return (
+                  <motion.button
+                    key={tech}
+                    onClick={() => setActiveFilter(tech)}
+                    whileHover={{ scale: 1.05, y: -1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                    className={`px-3.5 py-2 rounded-xl text-[11px] font-bold font-display cursor-pointer relative select-none transition-colors duration-250 ${
+                      isActive
+                        ? "text-white"
+                        : "text-slate-600 dark:text-slate-300 hover:text-solar-orange bg-slate-50 dark:bg-slate-900/25 hover:bg-slate-100/50"
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeProjectFilter"
+                        className="absolute inset-0 bg-solar-orange rounded-xl z-0 shadow-md"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{tech}</span>
+                  </motion.button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* Projects Grid */}
-        <div className="mx-auto grid max-w-6xl md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, idx) => {
-              const isSecond = idx === 1;
-              return (
+          {/* ── Preview card grid ─────────────────────────────────── */}
+          <div className="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, idx) => (
                 <motion.div
                   layout
                   key={project.id}
-                  className={`group relative ${isSecond ? "pt-0 md:pt-16" : ""}`}
-                  variants={projectCardVariants(0)}
-                  initial="hidden"
-                  animate="visible"
-                  exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  initial={{ y: 36, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ opacity: 0, scale: 0.94, transition: { duration: 0.18 } }}
+                  transition={{ type: "spring", stiffness: 72, damping: 14, delay: idx * 0.08 }}
+                  className="group"
                 >
-                  {/* Neomorphic Project Card Canvas */}
-                  <div className="neu-card p-4 sm:p-5 rounded-[24px] mb-8 sm:mb-10 overflow-hidden transform group-hover:translate-y-[-6px] transition-all duration-500 relative">
-                    
-                    {/* Outer Tech Display Symbol */}
-                    <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-900/50 flex items-center justify-center relative shadow-neu-pressed dark:shadow-neu-pressed-dark mb-5 sm:mb-6">
-                      <span className="material-icons-outlined text-slate-200 dark:text-slate-800 text-7xl sm:text-8xl lg:text-9xl absolute opacity-28 select-none transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-700 ease-out">
+                  <div className="neu-card rounded-[20px] overflow-hidden flex flex-col h-full transition-all duration-400 group-hover:-translate-y-1 group-hover:shadow-[0_20px_44px_rgba(28,19,16,0.12)] border border-white/45 dark:border-slate-800/40">
+
+                    {/* ── Image / icon area ──────────────────────── */}
+                    <div
+                      className={`relative aspect-[16/9] flex items-center justify-center overflow-hidden bg-gradient-to-br ${
+                        cardGradients[idx % cardGradients.length]
+                      }`}
+                    >
+                      {/* Decorative icon */}
+                      <span className="material-icons-outlined text-slate-200/60 dark:text-slate-700/50 text-[120px] absolute select-none transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700 ease-out">
                         {project.icon}
                       </span>
-                      
-                      {/* Floating Tech Badges */}
-                      <div className="absolute top-3 left-3 flex flex-wrap gap-2 z-20">
+
+                      {/* Doodle art */}
+                      {project.doodleUrl && (
+                        <div className={`absolute select-none pointer-events-none opacity-40 z-10 hidden lg:block ${project.positionClass ?? "bottom-0 right-0 w-28 h-28"}`}>
+                          <img
+                            alt=""
+                            src={project.doodleUrl}
+                            className="w-full h-full object-contain"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                      )}
+
+                      {/* Year badge */}
+                      <div className="absolute top-3 right-3 z-20 px-2.5 py-1 rounded-full bg-[#1C1310]/80 backdrop-blur-sm text-white text-[9px] font-bold font-display tracking-widest select-none">
+                        {project.year}
+                      </div>
+
+                      {/* Status chip for AgentVisionX */}
+                      {project.id === "agentvisionx" && (
+                        <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet-600/90 backdrop-blur-sm">
+                          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                          <span className="text-[9px] font-bold text-white font-display tracking-wider select-none">AI</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* ── Card body ──────────────────────────────── */}
+                    <div className="flex flex-col flex-1 p-[18px] sm:p-5 gap-3.5">
+
+                      {/* Tech badges */}
+                      <div className="flex flex-wrap gap-1.5">
                         {project.techStack.map((tech) => (
-                          <span key={tech} className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-sm shadow-sm text-slate-700 dark:text-slate-300 text-[9px] sm:text-[10px] font-bold font-display px-2 py-1 rounded-md">
+                          <span
+                            key={tech}
+                            className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 text-[9px] font-bold font-display"
+                          >
                             {tech}
                           </span>
                         ))}
                       </div>
 
-                      <div className="relative z-10 text-center px-4">
-                        <div className="text-solar-orange font-black uppercase tracking-[0.18em] text-[9px] sm:text-[10px] mb-2 font-display">
-                          {project.year}
-                        </div>
-                        <div className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white font-display">
+                      {/* Title */}
+                      <div>
+                        <h3 className="text-base sm:text-lg font-bold text-slate-800 dark:text-white font-display leading-snug">
                           {project.title}
-                        </div>
+                        </h3>
+                        <p className="mt-1.5 text-[9px] font-bold uppercase tracking-widest text-solar-orange font-display">
+                          {project.category}
+                        </p>
                       </div>
-                    </div>
 
-                    {/* Bullet points detailing exact work contributions */}
-                    <div className="space-y-3 px-1 sm:px-2 mb-6 sm:mb-7">
-                      <p className="text-slate-500 dark:text-slate-400 font-semibold text-xs uppercase tracking-wider font-display">Key Highlights</p>
-                      <ul className="space-y-2.5">
-                        {project.bullets.map((bullet, bIdx) => (
-                          <li key={bIdx} className="flex gap-3 text-[13px] sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                            <span className="material-icons-outlined text-solar-orange text-sm sm:text-base select-none mt-0.5 shrink-0">
-                              check_circle
-                            </span>
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                      {/* Tagline */}
+                      {project.tagline && (
+                        <p className="text-[13px] text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
+                          {project.tagline}
+                        </p>
+                      )}
 
-                    {/* GitHub Repository Telemetry Stats Section */}
-                    {project.githubRepo && (
-                      <div className="mb-6 sm:mb-7 px-1 sm:px-2">
-                        <GithubStatsCard 
-                          githubRepo={project.githubRepo} 
-                          fallbackStats={project.fallbackStats}
-                        />
-                      </div>
-                    )}
-
-                    {/* Live URL Link Button */}
-                    {project.demoUrl && (
-                      <div className="px-1 sm:px-2">
-                        <a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          referrerPolicy="no-referrer"
-                          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-solar-orange hover:text-orange-600 transition-colors font-display"
+                      {/* CTAs */}
+                      <div className="mt-auto flex items-center gap-3 pt-2">
+                        <button
+                          onClick={() => setSelectedProject(project)}
+                          className="group/btn inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-[#FF8A4B] to-[#D84C1B] px-3.5 py-2 text-[11px] font-bold text-white font-display shadow-md shadow-orange-200/50 transition-all duration-300 hover:shadow-orange-300/60 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D84C1B]/50"
                         >
-                          <span className="material-symbols-outlined text-sm leading-none">rocket_launch</span>
-                          See live implementation
-                        </a>
-                      </div>
-                    )}
-                  </div>
+                          Explore Deep Dive
+                          <span className="transition-transform duration-300 group-hover/btn:translate-x-0.5">
+                            <ArrowRightIcon />
+                          </span>
+                        </button>
 
-                  {/* Floating Celestial Line Art Doodle */}
-                  {project.doodleUrl && (
-                    <div className={`absolute select-none pointer-events-none opacity-60 z-20 hidden lg:block ${project.positionClass}`}>
-                      <img
-                        alt={project.imageAlt}
-                        className="w-full h-full object-contain"
-                        src={project.doodleUrl}
-                        referrerPolicy="no-referrer"
-                      />
+                        {project.demoUrl && (
+                          <a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-[11px] font-bold text-slate-600 dark:text-slate-300 font-display transition-all duration-250 hover:border-solar-orange hover:text-solar-orange hover:-translate-y-0.5"
+                            title="Live Demo"
+                          >
+                            <span className="material-symbols-outlined text-sm leading-none">rocket_launch</span>
+                            Live
+                          </a>
+                        )}
+                      </div>
+
                     </div>
-                  )}
+                  </div>
                 </motion.div>
-              );
-            })}
-          </AnimatePresence>
+              ))}
+            </AnimatePresence>
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Deep dive modal */}
+      <ProjectDetailModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+    </>
   );
 }

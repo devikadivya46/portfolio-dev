@@ -94,7 +94,7 @@ export default function Achievements() {
                 {experiences.map((exp) => (
                   <motion.div
                     key={exp.id}
-                    className="p-8 md:p-10 neu-card rounded-3xl relative overflow-hidden transition-all duration-300 hover:scale-[1.01]"
+                    className="p-7 md:p-8 neu-card rounded-[28px] relative overflow-hidden border border-white/45 dark:border-slate-800/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(28,19,16,0.12)]"
                     variants={itemVariants}
                   >
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-dashed border-slate-200 dark:border-slate-800">
@@ -131,6 +131,20 @@ export default function Achievements() {
                       ))}
                     </ul>
 
+                    {exp.documentHref && (
+                      <div className="mt-6 pt-5 border-t border-dashed border-slate-200 dark:border-slate-800 flex justify-start">
+                        <a
+                          href={encodeURI(exp.documentHref)}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full bg-solar-orange px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-white font-display shadow-[0_10px_24px_rgba(255,124,0,0.25)] transition-transform hover:-translate-y-0.5"
+                        >
+                          View Offer Letter
+                          <span className="material-icons-outlined text-sm">open_in_new</span>
+                        </a>
+                      </div>
+                    )}
+
                     {/* Decorative Watermark */}
                     <span className="material-symbols-outlined absolute top-10 right-10 text-slate-100 dark:text-slate-900/40 text-8xl pointer-events-none select-none z-0">
                       integration_instructions
@@ -153,7 +167,7 @@ export default function Achievements() {
                     key={item.id}
                     whileHover={{ scale: 1.05, y: -4 }}
                     transition={{ type: "spring", stiffness: 350, damping: 20 }}
-                    className="p-6 md:p-8 neu-card rounded-2xl border border-transparent hover:border-dashed hover:border-orange-200 transition-all duration-300 flex flex-col justify-between"
+                    className="p-6 md:p-8 neu-card rounded-[22px] border border-white/45 dark:border-slate-800/40 hover:border-dashed hover:border-orange-200 transition-all duration-300 flex flex-col justify-between"
                     variants={itemVariants}
                   >
                     <div>

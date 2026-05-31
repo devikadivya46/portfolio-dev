@@ -80,16 +80,29 @@ export default function Header() {
       <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
       <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col gap-3" id="navbar">
         <div className="flex items-center justify-between gap-4">
-        <a 
-          href="#hero" 
-          onClick={(e) => {
-            e.preventDefault();
-            handleNavClick("hero");
-          }}
-          className="text-xl sm:text-2xl font-bold tracking-tight text-slate-950 dark:text-white font-serif italic group flex items-center gap-1 select-none"
-        >
-          Devika.
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("hero");
+            }}
+            className="text-xl sm:text-2xl font-bold tracking-tight text-slate-950 dark:text-white font-serif italic flex items-center gap-1 select-none"
+          >
+            Devika.
+          </a>
+
+          {/* System status micro-badge */}
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200/70 dark:border-emerald-800/40 select-none">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500 shadow-[0_0_6px_rgba(34,197,94,0.8)]" />
+            </span>
+            <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-400 font-display">
+              System: Operational
+            </span>
+          </div>
+        </div>
         
         <div className="hidden md:flex items-center space-x-1 p-1 bg-surface/50 dark:bg-slate-900/30 rounded-full shadow-neu-pressed dark:shadow-neu-pressed-dark relative">
           {navItems.map((item) => {

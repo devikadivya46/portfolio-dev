@@ -84,6 +84,16 @@ export default function Footer() {
             <span className="material-icons-outlined text-sm">north</span>
           </a>
         </div>
+          <div className="border-t border-white/6 mt-6 pt-6">
+            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="text-sm opacity-80">© {new Date().getFullYear()} Devika — All rights reserved.</div>
+              <div className="flex items-center gap-4">
+                <a href="https://github.com/devikadivya46" className="text-sm opacity-90 hover:opacity-100 transition">GitHub</a>
+                <a href="#" className="text-sm opacity-90 hover:opacity-100 transition">Dribbble</a>
+                <a href="#" className="text-sm opacity-90 hover:opacity-100 transition">Twitter</a>
+              </div>
+            </div>
+          </div>
       </div>
     </footer>
   );
