@@ -77,50 +77,65 @@ export default function Skills() {
         </motion.div>
 
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           id="skills-grid"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {skillCategories.map((category) => (
-            <motion.div
-              key={category.title}
-              className="premium-card p-6 sm:p-8 lg:p-10 rounded-3xl group transition-all duration-400 hover:scale-[1.02] hover:-translate-y-1"
-              variants={cardVariants}
-            >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-14 h-14 neu-btn-flat rounded-2xl flex items-center justify-center text-gradient-start">
-                  <span className="material-symbols-outlined text-2xl">
-                    {category.iconName}
+          {skillCategories.map((category, catIdx) => {
+            const accent = catIdx === 0
+              ? { border: "border-l-[#FF7C00]", icon: "text-[#FF7C00]", bg: "bg-orange-50", dot: "bg-[#FF7C00]", note: "Used in 3+ production projects" }
+              : catIdx === 1
+              ? { border: "border-l-violet-500", icon: "text-violet-600", bg: "bg-violet-50", dot: "bg-violet-500", note: "Hands-on from internship work" }
+              : { border: "border-l-emerald-500", icon: "text-emerald-600", bg: "bg-emerald-50", dot: "bg-emerald-500", note: "Event coordinator & team lead" };
+
+            return (
+              <motion.div
+                key={category.title}
+                className={`neu-card p-6 sm:p-8 rounded-3xl border-l-4 ${accent.border} hover:-translate-y-1 transition-all duration-300`}
+                variants={cardVariants}
+              >
+                {/* Card header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`w-12 h-12 ${accent.bg} rounded-2xl flex items-center justify-center shrink-0`}>
+                    <span className={`material-symbols-outlined text-xl ${accent.icon}`}>
+                      {category.iconName}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className={`text-[11px] ${accent.icon} uppercase font-black tracking-[0.22em] font-display`}>
+                      {category.title}
+                    </h3>
+                    <p className="text-[10px] text-[#9A8070] font-display mt-0.5">{accent.note}</p>
+                  </div>
+                </div>
+
+                {/* Skill pills — cleaner, less noisy */}
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <motion.span
+                      key={skill}
+                      whileHover={{ y: -2 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                      className="px-3 py-1.5 rounded-lg text-[12px] font-semibold select-none text-[#2B2B2B] border border-[#E8E0D7] bg-white/70 hover:border-[#FF7C00]/40 hover:text-[#D84C1B] cursor-default transition-all duration-200"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
+
+                {/* Footer count */}
+                <div className={`mt-5 pt-4 border-t border-[#E8E0D7] flex items-center gap-2`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${accent.dot}`} />
+                  <span className="text-[10px] text-[#9A8070] font-display font-bold">
+                    {category.skills.length} skills
                   </span>
                 </div>
-                <h3 className="text-xs text-gradient-start uppercase font-black tracking-[0.2em] font-display">
-                  {category.title}
-                </h3>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill) => (
-                  <motion.span
-                    key={skill}
-                    whileHover={{ scale: 1.08, y: -2 }}
-                    whileTap={{ scale: 0.96 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                    className="px-4 py-2 neu-btn-flat rounded-xl text-sm font-semibold select-none text-slate-900 dark:text-slate-200 hover:text-gradient-start cursor-default transition-colors"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </div>
-              <p className="mt-5 pt-4 border-t border-slate-200 dark:border-slate-700 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400 font-display">
-                {category.title === "Languages & Frameworks" && "Used in 3+ production projects"}
-                {category.title === "Databases & Tools" && "Hands-on from internship work"}
-                {category.title === "Soft Skills" && "Event coordinator & team lead"}
-              </p>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

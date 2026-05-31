@@ -135,16 +135,27 @@ export default function Header() {
           })}
         </div>
 
-        {/* Menu button — all screen sizes */}
-        <button
-          className="w-10 h-10 flex items-center justify-center rounded-full neu-btn-flat text-[#1C1310]"
-          aria-label="Toggle menu"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <span className="material-icons-outlined text-xl">
-            {isMenuOpen ? "close" : "menu"}
-          </span>
-        </button>
+        <div className="flex items-center gap-2">
+          {/* Desktop: "Let's Talk" CTA */}
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); handleNavClick("contact"); }}
+            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-[#FF8A4B] to-[#D84C1B] px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-[0_4px_14px_rgba(255,124,0,0.28)] hover:-translate-y-0.5 transition-transform select-none"
+          >
+            <span className="material-icons-outlined text-sm">mail</span>
+            Hire Me
+          </a>
+          {/* Mobile only: hamburger */}
+          <button
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-full neu-btn-flat text-[#1C1310]"
+            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <span className="material-icons-outlined text-xl">
+              {isMenuOpen ? "close" : "menu"}
+            </span>
+          </button>
+        </div>
         </div>
 
       </nav>

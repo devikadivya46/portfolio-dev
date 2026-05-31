@@ -183,8 +183,8 @@ export default function Projects() {
                           <span className="text-[9px] font-bold text-white font-display tracking-wider select-none">AI</span>
                         </div>
                       )}
-                      {/* "In Development" chip when no live demo */}
-                      {!project.demoUrl && project.id !== "clenorx" && (
+                      {/* "In Development" chip — only Anvesync (AgentVisionX already has AI badge at same spot) */}
+                      {project.id === "anvesync" && (
                         <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/90 backdrop-blur-sm">
                           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                           <span className="text-[9px] font-bold text-white font-display tracking-wider select-none">In Dev</span>
