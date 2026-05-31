@@ -49,13 +49,13 @@ export default function Skills() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white mb-4 font-display"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#1C1310] dark:text-white mb-4 font-display"
             variants={headingItemVariants}
           >
             Skills &amp; Expertise
           </motion.h2>
           <motion.p
-            className="text-slate-600 dark:text-slate-400 max-w-2xl text-lg"
+            className="text-[#5F5650] dark:text-slate-400 max-w-2xl text-lg"
             variants={headingItemVariants}
           >
             A comprehensive overview of my technical arsenal and professional strengths.
@@ -73,7 +73,7 @@ export default function Skills() {
           {skillCategories.map((category) => (
             <motion.div
               key={category.title}
-              className="neu-card p-6 sm:p-8 lg:p-10 rounded-3xl group transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
+              className="neu-card bg-[#F7F4EF] dark:bg-[#1a1a1e] p-6 sm:p-8 lg:p-10 rounded-3xl group transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
               variants={cardVariants}
             >
               <div className="flex items-center gap-4 mb-8">
@@ -94,7 +94,7 @@ export default function Skills() {
                     whileHover={{ scale: 1.08, y: -2 }}
                     whileTap={{ scale: 0.96 }}
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                    className="px-4 py-2 neu-btn-flat rounded-xl text-sm font-semibold select-none text-slate-700 dark:text-slate-300 hover:text-solar-orange cursor-default transition-colors"
+                    className="px-4 py-2 neu-btn-flat rounded-xl text-sm font-semibold select-none text-[#2B2B2B] dark:text-slate-200 hover:text-solar-orange cursor-default transition-colors"
                   >
                     {skill}
                   </motion.span>

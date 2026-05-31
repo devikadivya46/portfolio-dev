@@ -54,7 +54,7 @@ export default function Achievements() {
               className="inline-block bg-orange-100 dark:bg-orange-900/30 text-solar-orange px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-neu-btn font-display select-none"
               variants={headingItemVariants}
             >
-              History &amp; Laurels
+              History &amp; Awards
             </motion.span>
             <motion.h2
               className="text-4xl md:text-5xl font-semibold mb-8 leading-tight text-slate-800 dark:text-white font-display"

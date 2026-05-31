@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { motion, useScroll, useSpring } from "motion/react";
+import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
 
 export default function Header() {
   const [isDark, setIsDark] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 120,
@@ -61,7 +62,7 @@ export default function Header() {
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Works" },
-    { id: "achievements", label: "Laurels" },
+    { id: "achievements", label: "Awards" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -134,42 +135,77 @@ export default function Header() {
           })}
         </div>
 
-        <button
-          id="dark-light-toggle"
-          aria-label="Toggle dark mode"
-          className="w-10 h-10 flex items-center justify-center rounded-full neu-btn-flat text-slate-600 dark:text-slate-300"
-          onClick={toggleDarkMode}
-        >
-          <span className="material-icons-outlined text-xl">
-            {isDark ? "light_mode" : "dark_mode"}
-          </span>
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            id="dark-light-toggle"
+            aria-label="Toggle dark mode"
+            className="w-10 h-10 flex items-center justify-center rounded-full neu-btn-flat text-slate-600 dark:text-slate-300"
+            onClick={toggleDarkMode}
+          >
+            <span className="material-icons-outlined text-xl">
+              {isDark ? "light_mode" : "dark_mode"}
+            </span>
+          </button>
+          {/* Hamburger — mobile only */}
+          <button
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-full neu-btn-flat text-slate-600 dark:text-slate-300"
+            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <span className="material-icons-outlined text-xl">
+              {isMenuOpen ? "close" : "menu"}
+            </span>
+          </button>
+        </div>
         </div>
 
-        <div className="flex md:hidden items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1">
-          {navItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(item.id);
-                }}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-bold font-display transition-colors shrink-0 ${
-                  isActive
-                    ? "bg-white text-[#D84C1B] shadow-sm"
-                    : "bg-white/55 text-slate-600 hover:text-[#D84C1B]"
-                }`}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-        </div>
       </nav>
     </header>
+
+      {/* Mobile menu overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
+            <motion.nav
+              className="absolute top-20 left-4 right-4 bg-[#F7F4EF] dark:bg-[#1a1a1e] rounded-3xl p-5 shadow-[0_20px_60px_rgba(28,19,16,0.18)] border border-white/60 dark:border-slate-800/40"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 28 }}
+            >
+              <div className="space-y-1">
+                {navItems.map((item) => {
+                  const isActive = activeSection === item.id;
+                  return (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(item.id);
+                        setIsMenuOpen(false);
+                      }}
+                      className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm font-bold font-display transition-all ${
+                        isActive
+                          ? "bg-[#FF7C00] text-white shadow-[0_4px_14px_rgba(255,124,0,0.35)]"
+                          : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-[#FF7C00]"
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </div>
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
