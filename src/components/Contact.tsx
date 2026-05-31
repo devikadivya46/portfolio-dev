@@ -35,7 +35,7 @@ export default function Contact() {
     setSubmitting(true);
     const subject = encodeURIComponent(`Portfolio contact from ${name}`);
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-    window.open(`mailto:vulcansdeveloper@gmail.com?subject=${subject}&body=${body}`);
+    window.open(`mailto:devikadivyasn@gmail.com?subject=${subject}&body=${body}`);
     setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
