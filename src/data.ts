@@ -61,7 +61,7 @@ export const projects: ProjectItem[] = [
     id: "clenorx",
     title: "ClenorX Foundation",
     category: "Financial Literacy NGO Platform",
-    tagline: "An NGO web platform bridging financial literacy to underserved communities across rural Karnataka.",
+    tagline: "Live platform serving 500+ students & SHGs in rural Karnataka — deployed on Vercel with zero downtime.",
     description: "Designed and built a full-stack NGO platform empowering children and SHGs in rural Karnataka with financial literacy education.",
     bullets: [
       "Designed and built a full-stack NGO platform empowering children and SHGs in rural Karnataka with financial literacy education, featuring volunteer registration, donation portal, and contact system.",
@@ -90,7 +90,7 @@ export const projects: ProjectItem[] = [
     id: "anvesync",
     title: "Anvesync",
     category: "Workforce Management Platform",
-    tagline: "A role-based HR platform with location-aware attendance, leave workflows, and admin analytics dashboards.",
+    tagline: "Role-based HR platform for attendance, leave management & admin analytics — built end-to-end with Next.js + Prisma.",
     description: "Built a full-stack HR platform featuring employee record-keeping, multi-role state access, and interactive admin dashboards.",
     bullets: [
       "Built a full-stack HR platform featuring employee records, location-aware attendance, leave management, and admin analytics dashboards with role-based access control (Admin / Manager / Employee).",
@@ -118,7 +118,7 @@ export const projects: ProjectItem[] = [
     id: "agentvisionx",
     title: "AgentVisionX",
     category: "AI Agent Orchestration Platform",
-    tagline: "Next-gen AI agent coordination with real-time vision pipelines and autonomous task orchestration.",
+    tagline: "Multi-agent AI orchestration achieving sub-200ms task dispatch latency — WebSocket-powered live dashboard.",
     description: "A next-generation multi-agent coordination system with real-time computer vision pipelines, autonomous task planning, and live dashboard monitoring for enterprise AI workflows.",
     bullets: [
       "Architected a multi-agent orchestration layer supporting concurrent vision-pipeline tasks with real-time WebSocket streaming to a live monitoring dashboard, achieving sub-200ms task dispatch latency.",

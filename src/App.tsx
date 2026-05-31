@@ -6,6 +6,7 @@ import Projects from "./components/Projects";
 import Glimpses from "./components/Glimpses";
 import Achievements from "./components/Achievements";
 import Testimonials from "./components/Testimonials";
+import WhyHireMe from "./components/WhyHireMe";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CelestialBackground from "./components/CelestialBackground";
@@ -21,6 +22,7 @@ export default function App() {
       <Header />
       <main className="relative z-10">
         <Hero />
+        <WhyHireMe />
         <Skills />
         <About />
         <Projects />
