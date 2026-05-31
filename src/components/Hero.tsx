@@ -29,7 +29,7 @@ export default function Hero() {
 
             {/* Label fade-up */}
             <motion.p
-              className="mb-4 text-sm font-medium tracking-[0.25em] text-[#FF7C00] uppercase"
+              className="mb-4 text-sm font-medium tracking-[0.25em] text-gradient-start uppercase"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: "easeOut" }}
@@ -42,7 +42,7 @@ export default function Hero() {
               {["A creative designer", "crafting calm,", "modern, and", "thoughtful", "digital", "experiences."].map((chunk, i) => (
                 <motion.span
                   key={i}
-                  className="inline-block mr-[0.22em]"
+                  className={`inline-block mr-[0.22em] ${i === 4 ? "text-[#D84C1B] italic" : ""}`}
                   style={{ display: "inline-block" }}
                   initial={{ opacity: 0, y: 28, filter: "blur(5px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -55,7 +55,7 @@ export default function Hero() {
 
             {/* Subtitle */}
             <motion.p
-              className="mx-auto lg:mx-0 mt-5 max-w-xl text-sm sm:text-base leading-7 text-[#5F5650] sm:text-lg"
+              className="mx-auto lg:mx-0 mt-5 max-w-xl text-sm sm:text-base leading-7 text-slate-600 dark:text-slate-400 sm:text-lg"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: "easeOut", delay: 0.85 }}
@@ -70,14 +70,14 @@ export default function Hero() {
             >
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#FF8A4B] to-[#D84C1B] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200/60 transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center rounded-full premium-button px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
               >
                 View Work
               </a>
               <a
                 href="/documents/Devika S.N (2).pdf"
                 download="Devika_SN_Resume.pdf"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#1C1310]/15 bg-white/60 px-6 py-3 text-sm font-semibold text-[#1C1310] backdrop-blur-sm transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white/80 dark:bg-slate-900/40 px-6 py-3 text-sm font-semibold text-slate-900 dark:text-white backdrop-blur-sm transition-all hover:border-gradient-start hover:bg-white/95 dark:hover:bg-slate-800/60 hover:-translate-y-0.5"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
                 Download Resume

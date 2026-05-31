@@ -170,11 +170,18 @@ export default function Projects() {
                         {project.year}
                       </div>
 
-                      {/* Status chip for AgentVisionX */}
+                      {/* AI chip for AgentVisionX */}
                       {project.id === "agentvisionx" && (
                         <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet-600/90 backdrop-blur-sm">
                           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                           <span className="text-[9px] font-bold text-white font-display tracking-wider select-none">AI</span>
+                        </div>
+                      )}
+                      {/* "In Development" chip when no live demo */}
+                      {!project.demoUrl && project.id !== "clenorx" && (
+                        <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/90 backdrop-blur-sm">
+                          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                          <span className="text-[9px] font-bold text-white font-display tracking-wider select-none">In Dev</span>
                         </div>
                       )}
                     </div>

@@ -76,26 +76,22 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between border-t border-[#E8E0D7] pt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#7B736B]">
-          <p>Copyright © 2026 Devika S. N.</p>
-          <a
-            className="inline-flex items-center gap-2 hover:text-[#D84C1B] transition-colors"
-            href="#hero"
-            onClick={handleScrollToTop}
-          >
-            Back to top
-            <span className="material-icons-outlined text-sm">north</span>
-          </a>
-        </div>
-          <div className="border-t border-white/6 mt-6 pt-6">
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="text-sm opacity-80">© {new Date().getFullYear()} Devika — All rights reserved.</div>
-              <div className="flex items-center gap-4">
-                <a href="https://github.com/devikadivya46" className="text-sm opacity-90 hover:opacity-100 transition">GitHub</a>
-                <a href="#" className="text-sm opacity-90 hover:opacity-100 transition">Dribbble</a>
-                <a href="#" className="text-sm opacity-90 hover:opacity-100 transition">Twitter</a>
-              </div>
-            </div>
+          <div className="flex items-center gap-4">
+            <p>© {new Date().getFullYear()} Devika S. N. — All rights reserved.</p>
           </div>
+          <div className="flex items-center gap-5">
+            <a href="https://github.com/devikadivya46" target="_blank" rel="noreferrer" className="hover:text-[#D84C1B] transition-colors">GitHub</a>
+            <a href="https://linkedin.com/in/devika-sn-50784a338" target="_blank" rel="noreferrer" className="hover:text-[#D84C1B] transition-colors">LinkedIn</a>
+            <a
+              className="inline-flex items-center gap-1.5 hover:text-[#D84C1B] transition-colors"
+              href="#hero"
+              onClick={handleScrollToTop}
+            >
+              Back to top
+              <span className="material-icons-outlined text-sm">north</span>
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

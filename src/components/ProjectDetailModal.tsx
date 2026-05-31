@@ -51,7 +51,7 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", stiffness: 280, damping: 32 }}
-            className="fixed inset-x-0 bottom-0 top-[4.5rem] z-[201] flex flex-col overflow-hidden rounded-t-[28px] bg-[#F7F4EF] dark:bg-[#1a1a1e] shadow-[0_-20px_80px_rgba(0,0,0,0.18)]"
+            className="fixed inset-x-0 bottom-0 top-[4.5rem] z-[201] flex flex-col overflow-hidden rounded-t-[28px] premium-card premium-shadow"
             role="dialog"
             aria-modal="true"
             aria-label={`${project.title} — Deep Dive`}
@@ -62,11 +62,11 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
             </div>
 
             {/* ── Sticky header bar ──────────────────────────────── */}
-            <div className="shrink-0 px-5 sm:px-8 py-4 flex items-center justify-between border-b border-slate-200/60 dark:border-slate-800/60 bg-[#F7F4EF]/90 dark:bg-[#1a1a1e]/90 backdrop-blur-sm">
+            <div className="shrink-0 px-5 sm:px-8 py-4 flex items-center justify-between border-b border-slate-200/60 dark:border-slate-800/60 bg-white/80 dark:bg-slate-900/40 backdrop-blur-sm">
               <div className="flex items-center gap-4 min-w-0">
                 <button
                   onClick={onClose}
-                  className="flex items-center gap-1.5 text-xs font-bold font-display text-slate-500 dark:text-slate-400 hover:text-solar-orange transition-colors shrink-0"
+                  className="flex items-center gap-1.5 text-xs font-bold font-display text-slate-500 dark:text-slate-400 hover:text-gradient-start transition-colors shrink-0"
                   aria-label="Close project detail"
                 >
                   <span className="material-icons-outlined text-base leading-none">arrow_back</span>
@@ -76,7 +76,7 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
                 <div className="w-px h-5 bg-slate-200 dark:bg-slate-800 shrink-0" />
 
                 <div className="min-w-0">
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-solar-orange font-display truncate">
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-gradient-start font-display truncate">
                     {project.category}
                   </div>
                   <h2 className="text-base sm:text-lg font-bold text-slate-800 dark:text-white font-display truncate">
@@ -91,7 +91,7 @@ export default function ProjectDetailModal({ project, onClose }: ProjectDetailMo
                     href={project.demoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold font-display text-solar-orange hover:text-orange-600 transition-colors"
+                    className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold font-display text-gradient-start hover:text-gradient-end transition-colors"
                   >
                     <span className="material-symbols-outlined text-sm leading-none">rocket_launch</span>
                     Live Demo

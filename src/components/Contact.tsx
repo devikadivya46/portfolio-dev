@@ -58,7 +58,7 @@ export default function Contact() {
         
         {/* Symmetrical Section Header */}
         <div className="mb-12 sm:mb-16 text-center md:text-left select-none">
-          <p className="text-solar-orange text-xs font-bold tracking-[0.25em] uppercase font-display mb-3">✦ GET IN TOUCH ✦</p>
+          <p className="text-gradient-start text-xs font-bold tracking-[0.25em] uppercase font-display mb-3">✦ GET IN TOUCH ✦</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black font-serif tracking-tight text-slate-900 dark:text-white">
             Let's create something <span className="italic font-normal">extraordinary</span> together.
           </h2>
@@ -77,7 +77,7 @@ export default function Contact() {
             >
               
               {/* Hand-Drawn Doodle Frame wrapper resembling the style of About/Skills */}
-              <div className="neu-card p-5 sm:p-6 md:p-8 rounded-3xl flex flex-col items-center justify-center relative overflow-hidden bg-white/50 dark:bg-slate-900/10 border border-slate-200/50 dark:border-slate-800/40">
+              <div className="premium-card p-5 sm:p-6 md:p-8 rounded-3xl flex flex-col items-center justify-center relative overflow-hidden border border-white/20 dark:border-slate-700/40">
                 <div className="w-[160px] sm:w-[220px] pointer-events-none select-none z-10 transform hover:scale-105 transition-transform duration-500">
                   <img
                     src={CONTACT_TALKING_CHARS}
@@ -93,25 +93,25 @@ export default function Contact() {
 
               {/* Quick info cards */}
               <div className="space-y-4">
-                <div className="neu-card p-4 sm:p-5 rounded-2xl flex items-center gap-4 border border-orange-100/30 dark:border-slate-800/20">
+                <div className="premium-card p-4 sm:p-5 rounded-2xl flex items-center gap-4 border border-white/20 dark:border-slate-700/40">
                   <div className="w-11 h-11 rounded-xl bg-orange-50 dark:bg-slate-900 border border-orange-100/50 dark:border-slate-800 flex items-center justify-center text-solar-orange">
                     <span className="material-symbols-outlined text-lg">mail</span>
                   </div>
                   <div className="text-left font-display">
                     <span className="block text-[8px] uppercase font-black tracking-widest text-slate-400">EMAIL ADDRESS</span>
-                    <a href="mailto:devikadivyasn@gmail.com" className="text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-solar-orange transition-colors">
+                    <a href="mailto:devikadivyasn@gmail.com" className="text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-gradient-start transition-colors">
                       devikadivyasn@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="neu-card p-4 sm:p-5 rounded-2xl flex items-center gap-4 border border-orange-100/30 dark:border-slate-800/20">
+                <div className="neu-card p-4 sm:p-5 rounded-2xl flex items-center gap-4 border border-white/20 dark:border-slate-700/40">
                   <div className="w-11 h-11 rounded-xl bg-orange-50 dark:bg-slate-900 border border-orange-100/50 dark:border-slate-800 flex items-center justify-center text-solar-orange">
                     <span className="material-symbols-outlined text-lg">phone_iphone</span>
                   </div>
                   <div className="text-left font-display">
                     <span className="block text-[8px] uppercase font-black tracking-widest text-slate-400">PHONE LINE</span>
-                    <a href="tel:8088376546" className="text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-solar-orange transition-colors">
+                    <a href="tel:8088376546" className="text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-gradient-start transition-colors">
                       +91 8088376546
                     </a>
                   </div>
@@ -127,7 +127,7 @@ export default function Contact() {
                       key={social.name}
                       whileHover={{ scale: 1.12, y: -2 }}
                       whileTap={{ scale: 0.94 }}
-                      className="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-800 hover:border-orange-505 flex items-center justify-center text-xs font-bold font-display text-slate-650 dark:text-slate-400 hover:text-solar-orange transition-colors"
+                      className="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700 hover:border-gradient-start flex items-center justify-center text-xs font-bold font-display text-slate-700 dark:text-slate-400 hover:text-gradient-start transition-colors"
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -149,7 +149,7 @@ export default function Contact() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="p-5 sm:p-8 md:p-10 rounded-[28px] sm:rounded-[32px] bg-[#FFFAF5] dark:bg-[#16161a] border border-orange-100/45 dark:border-slate-800/40 shadow-neu-flat dark:shadow-neu-flat-dark h-full flex flex-col justify-between"
+              className="p-5 sm:p-8 md:p-10 rounded-[28px] sm:rounded-[32px] premium-card h-full flex flex-col justify-between"
             >
               <div>
                 <motion.div variants={itemVariants} className="mb-8 select-none text-left">
@@ -181,7 +181,7 @@ export default function Contact() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="e.g. Nicola Tesla"
-                          className="w-full py-2.5 bg-transparent border-b border-slate-300 dark:border-slate-800 focus:border-solar-orange dark:focus:border-solar-orange outline-none transition-colors text-slate-850 dark:text-white font-medium text-sm"
+                          className="w-full py-2.5 bg-transparent border-b border-slate-300 dark:border-slate-800 focus:border-gradient-start dark:focus:border-gradient-start outline-none transition-colors text-slate-900 dark:text-white font-medium text-sm"
                         />
                       </motion.div>
 
@@ -195,7 +195,7 @@ export default function Contact() {
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="e.g. nicola@cosmic.org"
-                          className="w-full py-2.5 bg-transparent border-b border-slate-300 dark:border-slate-800 focus:border-solar-orange dark:focus:border-solar-orange outline-none transition-colors text-slate-850 dark:text-white font-medium text-sm"
+                          className="w-full py-2.5 bg-transparent border-b border-slate-300 dark:border-slate-800 focus:border-gradient-start dark:focus:border-gradient-start outline-none transition-colors text-slate-900 dark:text-white font-medium text-sm"
                         />
                       </motion.div>
 
@@ -209,7 +209,7 @@ export default function Contact() {
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
                           placeholder="Describe your design or engineering requirements..."
-                          className="w-full py-2.5 bg-transparent border-b border-slate-300 dark:border-slate-800 focus:border-solar-orange dark:focus:border-solar-orange outline-none resize-none transition-colors text-slate-850 dark:text-white font-medium text-sm leading-relaxed"
+                          className="w-full py-2.5 bg-transparent border-b border-slate-300 dark:border-slate-800 focus:border-gradient-start dark:focus:border-gradient-start outline-none resize-none transition-colors text-slate-900 dark:text-white font-medium text-sm leading-relaxed"
                         />
                       </motion.div>
 
@@ -217,7 +217,7 @@ export default function Contact() {
                         variants={itemVariants}
                         type="submit"
                         disabled={submitting}
-                        className="w-full mt-4 bg-slate-900 hover:bg-slate-850 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs font-display flex items-center justify-center gap-2 shadow-sm hover:opacity-95 transition-all duration-300 cursor-pointer"
+                        className="w-full mt-4 premium-button py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs font-display flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer"
                       >
                         {submitting ? (
                           "Transmitting..."

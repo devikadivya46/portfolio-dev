@@ -51,7 +51,7 @@ export default function Achievements() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.span
-              className="inline-block bg-orange-100 dark:bg-orange-900/30 text-solar-orange px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-neu-btn font-display select-none"
+              className="inline-block bg-gradient-to-r from-gradient-start/10 to-gradient-end/10 text-gradient-start px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6 premium-shadow-near font-display select-none"
               variants={headingItemVariants}
             >
               History &amp; Awards
@@ -63,7 +63,7 @@ export default function Achievements() {
               Where I have contributed &amp; competed
             </motion.h2>
             <motion.div
-              className="relative w-48 h-48 flex items-center justify-center p-6 neu-card rounded-full select-none pointer-events-none"
+              className="relative w-48 h-48 flex items-center justify-center p-6 premium-card rounded-full select-none pointer-events-none"
               variants={headingItemVariants}
             >
               <img
@@ -85,7 +85,7 @@ export default function Achievements() {
           >
             {/* 1. Professional Experience Segment */}
             <div className="space-y-8">
-              <h3 className="text-xs text-solar-orange font-black uppercase tracking-[0.25em] font-display flex items-center gap-2">
+              <h3 className="text-xs text-gradient-start font-black uppercase tracking-[0.25em] font-display flex items-center gap-2">
                 <span className="material-symbols-outlined text-base">work</span>
                 Professional Internships
               </h3>
@@ -94,19 +94,19 @@ export default function Achievements() {
                 {experiences.map((exp) => (
                   <motion.div
                     key={exp.id}
-                    className="p-7 md:p-8 neu-card rounded-[28px] relative overflow-hidden border border-white/45 dark:border-slate-800/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(28,19,16,0.12)]"
+                    className="p-7 md:p-8 premium-card rounded-[28px] relative overflow-hidden border border-white/20 dark:border-slate-700/40 transition-all duration-400 hover:-translate-y-2"
                     variants={itemVariants}
                   >
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-dashed border-slate-200 dark:border-slate-800">
                       <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 neu-btn-flat rounded-2xl flex items-center justify-center text-solar-orange font-bold font-display text-lg select-none shrink-0">
+                        <div className="w-14 h-14 neu-btn-flat rounded-2xl flex items-center justify-center text-gradient-start font-bold font-display text-lg select-none shrink-0">
                           {exp.logoInitials}
                         </div>
                         <div>
                           <h4 className="font-bold text-slate-800 dark:text-white font-display text-lg leading-tight">
                             {exp.role}
                           </h4>
-                          <p className="text-solar-orange text-sm font-semibold font-display">
+                          <p className="text-gradient-start text-sm font-semibold font-display">
                             {exp.companyName}
                           </p>
                         </div>
@@ -125,7 +125,7 @@ export default function Achievements() {
                     <ul className="space-y-4">
                       {exp.bullets.map((bullet, idx) => (
                         <li key={idx} className="flex gap-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">
-                          <span className="text-solar-orange text-base select-none mt-0.5">•</span>
+                          <span className="text-gradient-start text-base select-none mt-0.5">•</span>
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -137,7 +137,7 @@ export default function Achievements() {
                           href={encodeURI(exp.documentHref)}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full bg-solar-orange px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-white font-display shadow-[0_10px_24px_rgba(255,124,0,0.25)] transition-transform hover:-translate-y-0.5"
+                          className="inline-flex items-center gap-2 rounded-full premium-button px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-white font-display transition-all"
                         >
                           View Offer Letter
                           <span className="material-icons-outlined text-sm">open_in_new</span>
@@ -156,7 +156,7 @@ export default function Achievements() {
 
             {/* 2. Key Hackathons & Coding Contests Segment */}
             <div className="space-y-8">
-              <h3 className="text-xs text-solar-orange font-black uppercase tracking-[0.25em] font-display flex items-center gap-2">
+              <h3 className="text-xs text-gradient-start font-black uppercase tracking-[0.25em] font-display flex items-center gap-2">
                 <span className="material-symbols-outlined text-base">emoji_events</span>
                 Key Competitions &amp; Hackathons
               </h3>
@@ -167,16 +167,16 @@ export default function Achievements() {
                     key={item.id}
                     whileHover={{ scale: 1.05, y: -4 }}
                     transition={{ type: "spring", stiffness: 350, damping: 20 }}
-                    className="p-6 md:p-8 neu-card rounded-[22px] border border-white/45 dark:border-slate-800/40 hover:border-dashed hover:border-orange-200 transition-all duration-300 flex flex-col justify-between"
+                    className="p-6 md:p-8 premium-card rounded-[22px] border border-white/20 dark:border-slate-700/40 transition-all duration-400 flex flex-col justify-between"
                     variants={itemVariants}
                   >
                     <div>
-                      <div className="w-12 h-12 neu-btn-flat rounded-xl flex items-center justify-center text-solar-orange mb-6">
+                      <div className="w-12 h-12 neu-btn-flat rounded-xl flex items-center justify-center text-gradient-start mb-6">
                         <span className="material-symbols-outlined text-2xl">
                           {item.iconName}
                         </span>
                       </div>
-                      <div className="text-[10px] bg-orange-100/50 dark:bg-orange-950/40 text-solar-orange px-2 py-1 rounded font-black uppercase font-display inline-block mb-3 select-none">
+                      <div className="text-[10px] bg-gradient-to-r from-gradient-start/10 to-gradient-end/10 text-gradient-start px-2 py-1 rounded font-black uppercase font-display inline-block mb-3 select-none">
                         {item.rank}
                       </div>
                       <h4 className="font-bold text-slate-800 dark:text-white font-display text-base mb-2 leading-snug">

@@ -91,7 +91,7 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ type: "spring", stiffness: 72, damping: 16, delay: 0.12 }}
           >
-            <div className="neu-card p-4 rounded-3xl w-full max-w-[280px] relative overflow-hidden">
+            <div className="premium-card p-4 rounded-3xl w-full max-w-[280px] relative overflow-hidden">
               <div className="w-full flex items-center justify-center transform hover:scale-[1.03] transition-transform duration-500">
                 <DoodleAbout />
               </div>
@@ -113,7 +113,7 @@ export default function About() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.1 }}
           >
-            <div className="neu-card rounded-3xl p-5">
+            <div className="premium-card rounded-3xl p-5">
               <span className="block text-[9px] text-slate-400 dark:text-slate-500 font-black uppercase tracking-[0.22em] font-display px-2 mb-4 select-none">
                 Explore Credentials
               </span>
@@ -126,8 +126,8 @@ export default function About() {
                       onClick={() => setActiveTab(item.id)}
                       className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl text-sm font-semibold transition-all duration-300 font-display text-left cursor-pointer group ${
                         isActive
-                          ? "bg-solar-orange text-white shadow-[0_4px_14px_rgba(255,124,0,0.35)]"
-                          : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900/20 hover:text-solar-orange"
+                          ? "bg-gradient-to-r from-gradient-start to-gradient-end text-white premium-shadow-mid"
+                          : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900/20 hover:text-gradient-start"
                       }`}
                     >
                       <span className="flex items-center gap-3">
@@ -158,7 +158,7 @@ export default function About() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.18 }}
           >
-            <div className="neu-card p-7 sm:p-9 rounded-3xl min-h-[340px]">
+            <div className="premium-card p-7 sm:p-9 rounded-3xl min-h-[340px]">
               <AnimatePresence mode="wait">
 
                 {activeTab === "education" && (
@@ -225,7 +225,7 @@ export default function About() {
                       {certifications.map((cert, idx) => (
                         <div
                           key={idx}
-                          className="p-5 neu-card rounded-2xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                          className="p-5 premium-card rounded-2xl relative overflow-hidden group transition-all duration-300 hover:-translate-y-0.5"
                         >
                           <span className="material-icons-outlined absolute right-4 top-4 text-emerald-500 text-base">
                             lock_open

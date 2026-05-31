@@ -74,7 +74,7 @@ export default function Header() {
     <>
       {/* Scroll-Linked Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-solar-orange via-amber-500 to-solar-orange origin-left z-[100] shadow-[0_1px_6px_rgba(249,115,22,0.45)] pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end origin-left z-[100] premium-shadow-near pointer-events-none"
         style={{ scaleX }}
       />
       
@@ -161,7 +161,7 @@ export default function Header() {
           >
             <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
             <motion.nav
-              className="absolute top-20 left-4 right-4 bg-[#F7F4EF] dark:bg-[#1a1a1e] rounded-3xl p-5 shadow-[0_20px_60px_rgba(28,19,16,0.18)] border border-white/60 dark:border-slate-800/40"
+              className="absolute top-20 left-4 right-4 premium-card premium-shadow rounded-3xl p-5 border border-white/40 dark:border-slate-700/40"
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
@@ -181,8 +181,8 @@ export default function Header() {
                       }}
                       className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm font-bold font-display transition-all ${
                         isActive
-                          ? "bg-[#FF7C00] text-white shadow-[0_4px_14px_rgba(255,124,0,0.35)]"
-                          : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-[#FF7C00]"
+                          ? "bg-gradient-to-r from-gradient-start to-gradient-end text-white premium-shadow"
+                          : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-gradient-start"
                       }`}
                     >
                       {item.label}
