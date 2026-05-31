@@ -5,6 +5,7 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Glimpses from "./components/Glimpses";
 import Achievements from "./components/Achievements";
+import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CelestialBackground from "./components/CelestialBackground";
@@ -25,6 +26,7 @@ export default function App() {
         <Projects />
         <Glimpses />
         <Achievements />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />

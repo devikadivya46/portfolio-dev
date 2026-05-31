@@ -15,6 +15,7 @@ export interface ProjectItem {
   year: string;
   icon: string;
   imageAlt: string;
+  previewUrl?: string;
   techStack: string[];
   demoUrl?: string;
   doodleUrl?: string;

@@ -32,8 +32,10 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
-    
     setSubmitting(true);
+    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.open(`mailto:vulcansdeveloper@gmail.com?subject=${subject}&body=${body}`);
     setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
@@ -42,8 +44,8 @@ export default function Contact() {
         setName("");
         setEmail("");
         setMessage("");
-      }, 5000);
-    }, 1200);
+      }, 4000);
+    }, 600);
   };
 
   return (

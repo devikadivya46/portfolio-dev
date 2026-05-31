@@ -16,6 +16,17 @@ export default function Hero() {
           {/* ── Left column ──────────────────────────────────────── */}
           <div className="order-2 lg:order-1 lg:col-span-5 text-center lg:text-left">
 
+            {/* Open to work badge */}
+            <motion.div
+              className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200/80 rounded-full px-3.5 py-1.5 mb-4"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0 }}
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-[0.18em] text-emerald-700 font-display">Open to Opportunities</span>
+            </motion.div>
+
             {/* Label fade-up */}
             <motion.p
               className="mb-4 text-sm font-medium tracking-[0.25em] text-[#FF7C00] uppercase"
@@ -64,8 +75,8 @@ export default function Hero() {
                 View Work
               </a>
               <a
-                href="/resume.pdf"
-                download
+                href="/documents/Devika S.N (2).pdf"
+                download="Devika_SN_Resume.pdf"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-[#1C1310]/15 bg-white/60 px-6 py-3 text-sm font-semibold text-[#1C1310] backdrop-blur-sm transition-transform hover:-translate-y-0.5"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>

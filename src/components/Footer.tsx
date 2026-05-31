@@ -9,8 +9,10 @@ export default function Footer() {
 
   const quickLinks = [
     { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
     { label: "Works", href: "#projects" },
-    { label: "Glimpses", href: "#glimpses" },
+    { label: "Journey", href: "#glimpses" },
+    { label: "Awards", href: "#achievements" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -27,7 +29,7 @@ export default function Footer() {
               Devika.
             </a>
             <p className="max-w-md text-sm sm:text-base leading-7 text-[#5F5650]">
-              A warm, modern portfolio built around thoughtful design, clean code, and small details that feel polished on every screen.
+              B.Tech CSE student at VTU — building clean, purposeful digital products with React, Node.js, and a sharp eye for design.
             </p>
             <div className="flex flex-wrap gap-3">
               {socialLinks.map((social) => (

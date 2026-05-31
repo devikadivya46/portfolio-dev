@@ -100,7 +100,7 @@ export default function Header() {
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500 shadow-[0_0_6px_rgba(34,197,94,0.8)]" />
             </span>
             <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-400 font-display">
-              System: Operational
+              Available for Hire
             </span>
           </div>
         </div>

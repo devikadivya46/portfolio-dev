@@ -100,6 +100,11 @@ export default function Skills() {
                   </motion.span>
                 ))}
               </div>
+              <p className="mt-5 pt-4 border-t border-[#E8E0D7] text-[10px] font-bold uppercase tracking-[0.18em] text-[#9A8070] font-display">
+                {category.title === "Languages & Frameworks" && "Used in 3+ production projects"}
+                {category.title === "Databases & Tools" && "Hands-on from internship work"}
+                {category.title === "Soft Skills" && "Event coordinator & team lead"}
+              </p>
             </motion.div>
           ))}
         </motion.div>

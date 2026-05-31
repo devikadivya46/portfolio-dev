@@ -124,7 +124,7 @@ export default function Projects() {
                   transition={{ type: "spring", stiffness: 72, damping: 14, delay: idx * 0.08 }}
                   className="group"
                 >
-                  <div className="neu-card rounded-[20px] overflow-hidden flex flex-col h-full transition-all duration-400 group-hover:-translate-y-1 group-hover:shadow-[0_20px_44px_rgba(28,19,16,0.12)] border border-white/45 dark:border-slate-800/40">
+                  <div className="premium-card overflow-hidden flex flex-col h-full transition-all duration-400 group-hover:-translate-y-2">
 
                     {/* ── Image / icon area ──────────────────────── */}
                     <div
@@ -215,7 +215,7 @@ export default function Projects() {
                       <div className="mt-auto flex items-center gap-3 pt-2">
                         <button
                           onClick={() => setSelectedProject(project)}
-                          className="group/btn inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-[#FF8A4B] to-[#D84C1B] px-3.5 py-2 text-[11px] font-bold text-white font-display shadow-md shadow-orange-200/50 transition-all duration-300 hover:shadow-orange-300/60 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D84C1B]/50"
+                          className="group/btn premium-button inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-[11px] font-bold text-white font-display shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-orange-600/50"
                         >
                           Explore Deep Dive
                           <span className="transition-transform duration-300 group-hover/btn:translate-x-0.5">

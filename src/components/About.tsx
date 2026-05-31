@@ -91,10 +91,7 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ type: "spring", stiffness: 72, damping: 16, delay: 0.12 }}
           >
-            <div className="neu-card p-6 rounded-3xl w-full max-w-[360px] relative overflow-hidden">
-              <div className="absolute top-4 left-4 bg-orange-100/50 dark:bg-orange-900/10 px-3 py-1 rounded-md text-[9px] font-black uppercase text-solar-orange font-display select-none z-10">
-                VTU Student
-              </div>
+            <div className="neu-card p-4 rounded-3xl w-full max-w-[280px] relative overflow-hidden">
               <div className="w-full flex items-center justify-center transform hover:scale-[1.03] transition-transform duration-500">
                 <DoodleAbout />
               </div>
