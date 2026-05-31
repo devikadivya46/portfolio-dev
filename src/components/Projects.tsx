@@ -132,10 +132,26 @@ export default function Projects() {
                         cardGradients[idx % cardGradients.length]
                       }`}
                     >
-                      {/* Decorative icon */}
-                      <span className="material-icons-outlined text-slate-200/60 dark:text-slate-700/50 text-[120px] absolute select-none transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700 ease-out">
-                        {project.icon}
-                      </span>
+                      {/* Project preview image if available */}
+                      {project.previewUrl ? (
+                        <>
+                          <img
+                            src={project.previewUrl}
+                            alt={project.imageAlt}
+                            className="w-full h-full object-cover scale-[1.03] group-hover:scale-110 transition-transform duration-700 ease-out"
+                            referrerPolicy="no-referrer"
+                          />
+                          {/* Gradient overlay so badges stay readable */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 pointer-events-none" />
+                        </>
+                      ) : (
+                        <>
+                          {/* Decorative icon fallback */}
+                          <span className="material-icons-outlined text-slate-200/60 dark:text-slate-700/50 text-[120px] absolute select-none transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700 ease-out">
+                            {project.icon}
+                          </span>
+                        </>
+                      )}
 
                       {/* Doodle art */}
                       {project.doodleUrl && (
