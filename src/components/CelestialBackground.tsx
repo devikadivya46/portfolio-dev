@@ -9,36 +9,36 @@ export default function CelestialBackground() {
     >
       {/* ── Base warm gradient ───────────────────────── */}
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(145deg,#FFF5EC 0%,#F7F2EB 30%,#F2E8DC 65%,#EDE0D2 100%)"
+        background: "linear-gradient(145deg,#FFFAF5 0%,#FBF7F2 35%,#F7F3EE 70%,#F3EDE6 100%)"
       }} />
 
-      {/* ── TOP-RIGHT  large orange glow ─────────────── */}
+      {/* ── TOP-RIGHT soft glow ──────────────────────── */}
       <motion.div
         className="absolute"
         style={{
           top: "-140px", right: "-120px",
-          width: "720px", height: "660px",
+          width: "700px", height: "640px",
           borderRadius: "62% 38% 55% 45% / 50% 58% 42% 50%",
-          background: "radial-gradient(ellipse at 38% 32%, #FFB470 0%, #FF9B5A 28%, #FFCF98 58%, transparent 80%)",
-          filter: "blur(60px)",
-          opacity: 0.55,
+          background: "radial-gradient(ellipse at 38% 32%, #FFD8B0 0%, #FFC898 28%, #FFE4C8 58%, transparent 80%)",
+          filter: "blur(90px)",
+          opacity: 0.45,
         }}
-        animate={{ scale: [1, 1.07, 1], rotate: [0, 5, 0] }}
+        animate={{ scale: [1, 1.06, 1], rotate: [0, 4, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* ── BOTTOM-LEFT peach glow ───────────────────── */}
+      {/* ── BOTTOM-LEFT soft peach ───────────────────── */}
       <motion.div
         className="absolute"
         style={{
           bottom: "-120px", left: "-100px",
-          width: "660px", height: "600px",
+          width: "640px", height: "580px",
           borderRadius: "45% 55% 42% 58% / 55% 45% 55% 45%",
-          background: "radial-gradient(ellipse at 55% 55%, #FFCA98 0%, #FFB47A 32%, #FFD8B0 62%, transparent 82%)",
-          filter: "blur(70px)",
-          opacity: 0.5,
+          background: "radial-gradient(ellipse at 55% 55%, #FFE2C0 0%, #FFD4A8 32%, #FFEEDD 62%, transparent 82%)",
+          filter: "blur(100px)",
+          opacity: 0.4,
         }}
-        animate={{ scale: [1, 1.09, 1], x: [0, 22, 0] }}
+        animate={{ scale: [1, 1.08, 1], x: [0, 18, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
 
@@ -47,59 +47,44 @@ export default function CelestialBackground() {
         className="absolute"
         style={{
           top: "36%", right: "-80px",
-          width: "480px", height: "440px",
+          width: "460px", height: "420px",
           borderRadius: "55% 45% 60% 40% / 48% 52% 48% 52%",
-          background: "radial-gradient(ellipse at 44% 44%, #FFCF96 0%, #FFB87A 42%, transparent 74%)",
-          filter: "blur(56px)",
-          opacity: 0.42,
+          background: "radial-gradient(ellipse at 44% 44%, #FFE4C4 0%, #FFD4A8 42%, transparent 74%)",
+          filter: "blur(90px)",
+          opacity: 0.32,
         }}
-        animate={{ y: [0, -35, 0], scale: [1, 1.05, 1] }}
+        animate={{ y: [0, -30, 0], scale: [1, 1.04, 1] }}
         transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 4 }}
       />
 
-      {/* ── TOP-LEFT warm accent ─────────────────────── */}
+      {/* ── TOP-LEFT accent ──────────────────────────── */}
       <motion.div
         className="absolute"
         style={{
           top: "6%", left: "-60px",
-          width: "400px", height: "360px",
-          borderRadius: "50% 50% 44% 56% / 52% 48% 52% 48%",
-          background: "radial-gradient(circle, #FFE0BC 0%, #FFD09A 38%, transparent 70%)",
-          filter: "blur(60px)",
-          opacity: 0.38,
+          width: "380px", height: "340px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, #FFF0DC 0%, #FFE4C0 38%, transparent 70%)",
+          filter: "blur(80px)",
+          opacity: 0.3,
         }}
-        animate={{ y: [0, 28, 0], scale: [1, 1.06, 1] }}
+        animate={{ y: [0, 24, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 6 }}
       />
 
-      {/* ── BOTTOM-RIGHT warm blob ───────────────────── */}
+      {/* ── BOTTOM-RIGHT blob ────────────────────────── */}
       <motion.div
         className="absolute"
         style={{
           bottom: "10%", right: "4%",
-          width: "420px", height: "380px",
+          width: "400px", height: "360px",
           borderRadius: "42% 58% 52% 48% / 56% 44% 56% 44%",
-          background: "radial-gradient(ellipse at 50% 50%, #FFCC90 0%, #FFB468 36%, transparent 70%)",
-          filter: "blur(64px)",
-          opacity: 0.34,
-        }}
-        animate={{ scale: [1, 1.08, 1], rotate: [0, -6, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 8 }}
-      />
-
-      {/* ── CENTER large ambient blob ────────────────── */}
-      <motion.div
-        className="absolute"
-        style={{
-          top: "58%", left: "25%",
-          width: "500px", height: "420px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, #FFD4A0 0%, #FFC07C 30%, transparent 68%)",
-          filter: "blur(80px)",
+          background: "radial-gradient(ellipse at 50% 50%, #FFE2B4 0%, #FFD090 36%, transparent 70%)",
+          filter: "blur(88px)",
           opacity: 0.25,
         }}
-        animate={{ scale: [1, 1.1, 1], y: [0, -20, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 10 }}
+        animate={{ scale: [1, 1.07, 1], rotate: [0, -5, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 8 }}
       />
 
       {/* ── Dot grid ─────────────────────────────────── */}

@@ -98,7 +98,7 @@
 
 @layer base {
   html {
-    background: linear-gradient(145deg, #FFF5EC 0%, #F7F2EB 35%, #F2EAE0 70%, #EDE3D6 100%);
+    background: linear-gradient(145deg, #FFFCF8 0%, #FBF8F3 40%, #F8F4EF 100%);
     min-height: 100%;
   }
 
