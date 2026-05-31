@@ -30,13 +30,27 @@ export default function Glimpses() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
+          className="relative mb-10 sm:mb-14 overflow-visible"
         >
-          <p className="text-xs font-black tracking-[0.25em] uppercase text-[#D84C1B] mb-3 font-display">
-            My Story
-          </p>
+          <span className="absolute -top-4 right-0 text-[7rem] sm:text-[9rem] font-black leading-none select-none pointer-events-none hidden sm:block"
+            style={{ color: "rgba(28,19,16,0.038)", fontFamily: "'Outfit',sans-serif" }}>04</span>
+
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-8 h-[2px] rounded-full bg-[#FF7C00]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-[#FF7C00] font-display">Behind the Scenes</span>
+            <div className="flex gap-1">
+              <div className="w-2 h-2 rounded-full bg-[#FF7C00] opacity-40" />
+              <div className="w-2 h-2 rounded-full bg-[#FF8A4B] opacity-25" />
+            </div>
+          </div>
+
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#1C1310] font-serif max-w-2xl">
-            Journey, experiences &amp; what I'm exploring.
+            The Road So Far.
           </h2>
+          <div className="mt-3 w-16 h-[3px] rounded-full bg-gradient-to-r from-[#FF8A4B] to-[#D84C1B]" />
+          <p className="mt-4 text-[#5F5650] text-base sm:text-lg max-w-2xl leading-relaxed">
+            Internships, certifications, milestones — and the things I'm obsessively learning right now.
+          </p>
         </motion.div>
 
         {/* ══════════════════════════════════════════════════

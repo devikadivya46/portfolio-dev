@@ -57,11 +57,27 @@ export default function Contact() {
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         
         {/* Symmetrical Section Header */}
-        <div className="mb-12 sm:mb-16 text-center md:text-left select-none">
-          <p className="text-gradient-start text-xs font-bold tracking-[0.25em] uppercase font-display mb-3">✦ GET IN TOUCH ✦</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black font-serif tracking-tight text-slate-900 dark:text-white">
-            Let's create something <span className="italic font-normal">extraordinary</span> together.
+        <div className="relative mb-12 sm:mb-16 overflow-visible">
+          <span className="absolute -top-4 right-0 text-[7rem] sm:text-[9rem] font-black leading-none select-none pointer-events-none hidden sm:block"
+            style={{ color: "rgba(28,19,16,0.038)", fontFamily: "'Outfit',sans-serif" }}>07</span>
+
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-8 h-[2px] rounded-full bg-[#FF7C00]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-[#FF7C00] font-display">Let's Connect</span>
+            <div className="flex gap-1">
+              <div className="w-2 h-2 rounded-full bg-[#FF7C00] opacity-40" />
+              <div className="w-2 h-2 rounded-full bg-[#FF8A4B] opacity-25" />
+              <div className="w-2 h-2 rounded-full bg-[#FFB38A] opacity-15" />
+            </div>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-semibold tracking-tight text-[#1C1310]">
+            Let's Build<br className="hidden sm:block" /> Something Real.
           </h2>
+          <div className="mt-3 w-16 h-[3px] rounded-full bg-gradient-to-r from-[#FF8A4B] to-[#D84C1B]" />
+          <p className="mt-4 text-[#5F5650] text-base sm:text-lg max-w-xl leading-relaxed">
+            Open to internships, freelance collaborations, and projects worth building. Let's talk.
+          </p>
         </div>
 
         <div className="grid grid-cols-12 gap-y-10 lg:gap-y-0 lg:gap-x-12 items-stretch">

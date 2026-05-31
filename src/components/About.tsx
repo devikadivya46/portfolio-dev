@@ -45,23 +45,32 @@ export default function About() {
 
           {/* Intro text — left */}
           <div className="lg:col-span-6 xl:col-span-7 flex flex-col gap-4">
-            <FadeUp delay={0}>
-              <span className="inline-block bg-orange-100 dark:bg-orange-900/30 text-solar-orange px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-neu-btn font-display select-none">
-                About Me &amp; Credentials
-              </span>
-            </FadeUp>
+            <div className="relative overflow-visible">
+              <span className="absolute -top-4 right-0 text-[7rem] sm:text-[9rem] font-black leading-none select-none pointer-events-none hidden sm:block"
+                style={{ color: "rgba(28,19,16,0.038)", fontFamily: "'Outfit',sans-serif" }}>02</span>
 
-            <FadeUp delay={0.1}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight text-slate-800 dark:text-white font-display tracking-tight">
-                A deep love for minimal design, clean code &amp; problem solving
-              </h2>
-            </FadeUp>
+              <FadeUp delay={0}>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-8 h-[2px] rounded-full bg-[#FF7C00]" />
+                  <span className="inline-block bg-orange-100 text-[#FF7C00] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.22em] font-display select-none">
+                    The Person Behind the Work
+                  </span>
+                </div>
+              </FadeUp>
 
-            <FadeUp delay={0.18}>
-              <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl">
-                I thrive on the challenge of finding the perfect balance between creativity and practicality. With a CGPA of 8.2 and a deep focus on React, Node.js, and modern web technologies, I aim to create intuitive user experiences that actually matter.
-              </p>
-            </FadeUp>
+              <FadeUp delay={0.1}>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-semibold leading-tight text-[#1C1310] tracking-tight mb-3">
+                  Where design<br className="hidden sm:block" /> meets engineering.
+                </h2>
+                <div className="w-16 h-[3px] rounded-full bg-gradient-to-r from-[#FF8A4B] to-[#D84C1B] mb-4" />
+              </FadeUp>
+
+              <FadeUp delay={0.18}>
+                <p className="text-[#5F5650] text-base sm:text-lg leading-relaxed max-w-xl">
+                  B.Tech CSE student building clean, purposeful digital products — with a sharp eye for design and a love for well-crafted code.
+                </p>
+              </FadeUp>
+            </div>
 
             {/* Inline micro-stats */}
             <FadeUp delay={0.26}>

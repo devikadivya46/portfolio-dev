@@ -42,23 +42,37 @@ export default function Skills() {
     <section className="py-20 sm:py-24 relative" id="skills">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
-          className="mb-16"
+          className="relative mb-16 overflow-visible"
           variants={headingContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
+          <span className="absolute -top-4 right-0 text-[7rem] sm:text-[9rem] font-black leading-none select-none pointer-events-none hidden sm:block"
+            style={{ color: "rgba(28,19,16,0.038)", fontFamily: "'Outfit',sans-serif" }}>01</span>
+
+          <motion.div className="flex items-center gap-3 mb-5" variants={headingItemVariants}>
+            <div className="w-8 h-[2px] rounded-full bg-[#FF7C00]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-[#FF7C00] font-display">What I Build With</span>
+            <div className="flex gap-1">
+              <div className="w-2 h-2 rounded-full bg-[#FF7C00] opacity-40" />
+              <div className="w-2 h-2 rounded-full bg-[#FF8A4B] opacity-25" />
+              <div className="w-2 h-2 rounded-full bg-[#FFB38A] opacity-15" />
+            </div>
+          </motion.div>
+
           <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#1C1310] dark:text-white mb-4 font-display"
+            className="text-3xl sm:text-4xl md:text-5xl font-serif font-semibold tracking-tight text-[#1C1310] mb-3"
             variants={headingItemVariants}
           >
-            Skills &amp; Expertise
+            My Toolkit.
           </motion.h2>
+          <div className="w-16 h-[3px] rounded-full bg-gradient-to-r from-[#FF8A4B] to-[#D84C1B] mb-4" />
           <motion.p
-            className="text-slate-600 dark:text-slate-400 max-w-2xl text-lg"
+            className="text-[#5F5650] max-w-2xl text-base sm:text-lg leading-relaxed"
             variants={headingItemVariants}
           >
-            A comprehensive overview of my technical arsenal and professional strengths.
+            A full-stack skill set — built across real projects and refined through internships.
           </motion.p>
         </motion.div>
 

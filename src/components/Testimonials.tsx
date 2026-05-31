@@ -22,20 +22,27 @@ export default function Testimonials() {
 
         {/* Heading */}
         <motion.div
-          className="mb-10 sm:mb-12"
+          className="relative mb-10 sm:mb-12 overflow-visible"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="inline-block bg-orange-100 text-[#FF7C00] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-3 font-display">
-            By The Numbers
-          </span>
+          <span className="absolute -top-4 right-0 text-[7rem] sm:text-[9rem] font-black leading-none select-none pointer-events-none hidden sm:block"
+            style={{ color: "rgba(28,19,16,0.038)", fontFamily: "'Outfit',sans-serif" }}>06</span>
+
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-8 h-[2px] rounded-full bg-[#FF7C00]" />
+            <span className="inline-block bg-orange-100 text-[#FF7C00] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] font-display">
+              Verified Impact
+            </span>
+          </div>
           <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-[#1C1310] leading-snug">
-            Real results, honest numbers.
+            Numbers Don't Lie.
           </h2>
-          <p className="mt-2 text-sm text-[#5F5650] max-w-lg">
-            Verified achievements and competition results — no fabricated quotes.
+          <div className="mt-3 w-16 h-[3px] rounded-full bg-gradient-to-r from-[#FF8A4B] to-[#D84C1B]" />
+          <p className="mt-4 text-sm text-[#5F5650] max-w-lg leading-relaxed">
+            Documented achievements across internships, competitions, and real-world deployments.
           </p>
         </motion.div>
 

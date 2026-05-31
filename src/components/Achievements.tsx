@@ -44,24 +44,31 @@ export default function Achievements() {
         <div className="asymmetric-grid gap-16 items-start">
           {/* Left Column (Label & Line Artwork) */}
           <motion.div
-            className="col-span-12 lg:col-span-4 lg:sticky lg:top-36"
+            className="col-span-12 lg:col-span-4 lg:sticky lg:top-36 relative overflow-visible"
             variants={headingContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
+            <span className="absolute -top-4 right-0 text-[7rem] font-black leading-none select-none pointer-events-none hidden lg:block"
+              style={{ color: "rgba(28,19,16,0.038)", fontFamily: "'Outfit',sans-serif" }}>05</span>
             <motion.span
-              className="inline-block bg-gradient-to-r from-gradient-start/10 to-gradient-end/10 text-gradient-start px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6 premium-shadow-near font-display select-none"
+              className="inline-flex items-center gap-2 bg-orange-100 text-[#FF7C00] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-6 font-display select-none"
               variants={headingItemVariants}
             >
-              History &amp; Awards
+              <div className="w-4 h-[2px] rounded-full bg-[#FF7C00]" />
+              Milestones &amp; Recognition
             </motion.span>
             <motion.h2
-              className="text-4xl md:text-5xl font-semibold mb-8 leading-tight text-slate-800 dark:text-white font-display"
+              className="text-4xl md:text-5xl font-serif font-semibold mb-3 leading-tight text-[#1C1310]"
               variants={headingItemVariants}
             >
-              Where I have contributed &amp; competed
+              How I Show Up.
             </motion.h2>
+            <div className="w-16 h-[3px] rounded-full bg-gradient-to-r from-[#FF8A4B] to-[#D84C1B] mb-5" />
+            <motion.p className="text-[#5F5650] text-base leading-relaxed max-w-sm mb-8" variants={headingItemVariants}>
+              Internships shipped, competitions won, and communities served.
+            </motion.p>
             <motion.div
               className="relative w-48 h-48 flex items-center justify-center p-6 premium-card rounded-full select-none pointer-events-none"
               variants={headingItemVariants}

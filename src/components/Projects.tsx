@@ -54,24 +54,30 @@ export default function Projects() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="flex flex-col items-start">
-              <motion.span
-                variants={headingItemVariants}
-                className="inline-block bg-orange-100 dark:bg-orange-900/30 text-solar-orange px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4 shadow-neu-btn font-display select-none"
-              >
-                Client &amp; Personal Works
-              </motion.span>
+            <div className="flex flex-col items-start relative overflow-visible">
+              <span className="absolute -top-4 right-0 text-[7rem] sm:text-[9rem] font-black leading-none select-none pointer-events-none hidden sm:block"
+                style={{ color: "rgba(28,19,16,0.038)", fontFamily: "'Outfit',sans-serif" }}>03</span>
+
+              <motion.div className="flex items-center gap-3 mb-5" variants={headingItemVariants}>
+                <div className="w-8 h-[2px] rounded-full bg-[#FF7C00]" />
+                <span className="inline-block bg-orange-100 text-[#FF7C00] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.22em] font-display select-none">
+                  Featured Work
+                </span>
+              </motion.div>
+
               <motion.h2
                 variants={headingItemVariants}
-                className="text-3xl sm:text-4xl font-serif font-bold text-slate-800 dark:text-white"
+                className="text-3xl sm:text-4xl font-serif font-bold text-[#1C1310]"
               >
-                Selected Projects
+                Work I'm Proud Of.
               </motion.h2>
+              <div className="mt-3 w-16 h-[3px] rounded-full bg-gradient-to-r from-[#FF8A4B] to-[#D84C1B]" />
+
               <motion.p
                 variants={headingItemVariants}
-                className="mt-3 text-sm text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed"
+                className="mt-4 text-sm sm:text-base text-[#5F5650] max-w-sm leading-relaxed"
               >
-                Click <span className="font-semibold text-solar-orange">Explore Deep Dive</span> on any card for architecture details, GitHub telemetry, and trade-off analysis.
+                Three products built from scratch — each solving a real problem for real people.
               </motion.p>
             </div>
           </motion.div>
