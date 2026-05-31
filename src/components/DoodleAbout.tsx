@@ -20,16 +20,64 @@ export default function DoodleAbout() {
 
       {/* ── Outer card shell ─────────────────────── */}
       <motion.div
-        className="relative rounded-[32px] overflow-hidden border border-white/70 shadow-[0_20px_56px_rgba(28,19,16,0.10)]"
-        style={{ background: "linear-gradient(160deg,#FFFAF5 0%,#F5EDE3 100%)" }}
+        className="relative rounded-[32px] overflow-hidden border border-white/60 shadow-[0_24px_64px_rgba(28,19,16,0.13)]"
+        style={{ background: "linear-gradient(145deg,#FFF3EA 0%,#FDEBD8 40%,#F6D9C2 100%)" }}
         initial={{ opacity: 0, scale: 0.94 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.12 }}
       >
-        {/* Dot grid background */}
-        <div className="absolute inset-0 opacity-[0.06] pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(circle,#1C1310 1px,transparent 1px)", backgroundSize: "18px 18px" }} />
+        {/* ── Rich layered background ─────────────── */}
+
+        {/* Large warm blob — top-right */}
+        <motion.div
+          className="absolute pointer-events-none"
+          style={{
+            top: "-30px", right: "-30px",
+            width: "220px", height: "220px",
+            borderRadius: "62% 38% 55% 45% / 48% 56% 44% 52%",
+            background: "radial-gradient(ellipse at 40% 40%,#FFCDA0 0%,#FFB87A 40%,transparent 75%)",
+            opacity: 0.55,
+          }}
+          variants={floatSlow} animate="animate"
+        />
+
+        {/* Medium blob — bottom-left */}
+        <motion.div
+          className="absolute pointer-events-none"
+          style={{
+            bottom: "30px", left: "-20px",
+            width: "160px", height: "140px",
+            borderRadius: "45% 55% 40% 60% / 55% 45% 55% 45%",
+            background: "radial-gradient(ellipse at 50% 50%,#FFD5AE 0%,#FFBE88 50%,transparent 78%)",
+            opacity: 0.45,
+          }}
+          variants={float} animate="animate"
+        />
+
+        {/* Small accent blob — mid-left */}
+        <motion.div
+          className="absolute pointer-events-none"
+          style={{
+            top: "38%", left: "-10px",
+            width: "80px", height: "90px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle,#FFC89A 0%,transparent 70%)",
+            opacity: 0.4,
+            filter: "blur(6px)",
+          }}
+          variants={floatSlow} animate="animate"
+        />
+
+        {/* Dot grid overlay */}
+        <div className="absolute inset-0 opacity-[0.045] pointer-events-none"
+          style={{ backgroundImage: "radial-gradient(circle,#7C4A1E 1px,transparent 1px)", backgroundSize: "18px 18px" }} />
+
+        {/* Subtle diagonal stripe texture */}
+        <div className="absolute inset-0 opacity-[0.018] pointer-events-none"
+          style={{
+            backgroundImage: "repeating-linear-gradient(45deg,#FF7C00 0px,#FF7C00 1px,transparent 1px,transparent 14px)",
+          }} />
 
         {/* Top bar */}
         <div className="flex items-center justify-between px-5 pt-4 pb-0 relative z-10">
@@ -44,10 +92,16 @@ export default function DoodleAbout() {
 
         {/* Illustration */}
         <div className="relative flex items-center justify-center px-4 pt-2 pb-0">
-          {/* Soft blob behind character */}
+          {/* Organic blob directly behind character */}
           <motion.div
-            className="absolute w-48 h-48 rounded-full opacity-40 pointer-events-none"
-            style={{ background: "radial-gradient(circle,#FFDCC0 0%,transparent 72%)" }}
+            className="absolute pointer-events-none"
+            style={{
+              width: "260px", height: "240px",
+              borderRadius: "60% 40% 54% 46% / 52% 58% 42% 48%",
+              background: "radial-gradient(ellipse at 45% 45%,#FFD4A8 0%,#FFBF88 35%,#FFA96A 65%,transparent 85%)",
+              opacity: 0.62,
+              filter: "blur(2px)",
+            }}
             variants={floatSlow} animate="animate"
           />
 
