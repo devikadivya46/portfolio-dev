@@ -1,246 +1,207 @@
 import { motion } from "motion/react";
 
+const float = {
+  animate: { y: [0, -8, 0], transition: { duration: 5, repeat: Infinity, ease: "easeInOut" } },
+};
+const floatSlow = {
+  animate: { y: [0, 6, 0], x: [0, 4, 0], transition: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.8 } },
+};
+const blink = {
+  animate: { opacity: [1, 0, 1], transition: { duration: 1.1, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.5 } },
+};
+const spin = {
+  animate: { rotate: [0, 360], transition: { duration: 22, repeat: Infinity, ease: "linear" } },
+};
+const pulse = {
+  animate: { scale: [1, 1.04, 1], transition: { duration: 3.5, repeat: Infinity, ease: "easeInOut" } },
+};
+
+const skills = ["React.js", "Next.js", "Node.js", "Python", "UI/UX", "Tailwind"];
+const stats = [
+  { value: "8.2", label: "CGPA" },
+  { value: "20+", label: "Projects" },
+  { value: "2+", label: "Internships" },
+];
+
 export default function DoodleAbout() {
-  // Float animation for tech rings in background
-  const floatVariants = {
-    animate: {
-      y: [0, -6, 0],
-      transition: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  // Pulse animation for screen glare/data rays
-  const pulseVariants = {
-    animate: {
-      opacity: [0.3, 0.7, 0.3],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
   return (
-    <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-square flex items-center justify-center p-4 mx-auto">
-      {/* Soft elegant backlighting */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-solar-orange/10 via-amber-500/5 to-transparent rounded-full filter blur-3xl opacity-40 dark:opacity-25 select-none pointer-events-none" />
-
-      {/* Premium Professional Human Line-Art Vector */}
+    <div className="relative w-full max-w-[360px] mx-auto select-none">
       <svg
-        viewBox="0 0 320 320"
-        className="w-full h-full select-none"
+        viewBox="0 0 380 460"
+        className="w-full h-full"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid meet"
       >
-        {/* 1. PROFESSIONAL TECH TELEMETRY COORDINATES SYSTEM (Background) */}
-        <motion.g variants={floatVariants} animate="animate">
-          {/* Subtle Outer Coordinates Circles */}
-          <circle
-            cx="160"
-            cy="160"
-            r="140"
-            className="stroke-slate-150 dark:stroke-slate-800/80"
-            strokeWidth="1"
-            strokeDasharray="4 8"
-          />
-          <circle
-            cx="160"
-            cy="160"
-            r="115"
-            className="stroke-slate-200 dark:stroke-slate-800"
-            strokeWidth="1.2"
-          />
-          
-          {/* Fine compass markings */}
-          <g className="stroke-slate-300 dark:stroke-slate-700" strokeWidth="1">
-            <line x1="160" y1="12" x2="160" y2="20" />
-            <line x1="160" y1="300" x2="160" y2="308" />
-            <line x1="12" y1="160" x2="20" y2="160" />
-            <line x1="300" y1="160" x2="308" y2="160" />
-          </g>
+        <defs>
+          {/* Avatar gradient */}
+          <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#FF8A4B" />
+            <stop offset="100%" stopColor="#D84C1B" />
+          </linearGradient>
+          {/* Card shadow gradient */}
+          <linearGradient id="cardGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#F0EAE2" stopOpacity="0.6" />
+          </linearGradient>
+          {/* Soft blob */}
+          <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#FFD8B8" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#FFD8B8" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#FF8A4B" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#FF8A4B" stopOpacity="0" />
+          </radialGradient>
+          {/* Dot grid pattern */}
+          <pattern id="dotGrid" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="9" cy="9" r="1.1" fill="#1C1310" opacity="0.065" />
+          </pattern>
+          {/* Clip for card */}
+          <clipPath id="cardClip">
+            <rect x="12" y="12" width="356" height="436" rx="30" />
+          </clipPath>
+        </defs>
+
+        {/* ── Card background ─────────────────────── */}
+        <rect x="12" y="12" width="356" height="436" rx="30" fill="url(#cardGlow)" />
+        <rect x="12" y="12" width="356" height="436" rx="30" fill="url(#dotGrid)" opacity="0.7" />
+        <rect x="12" y="12" width="356" height="436" rx="30"
+          stroke="#E8E0D6" strokeWidth="1.5" />
+
+        {/* Background blobs */}
+        <motion.ellipse cx="310" cy="80" rx="88" ry="80" fill="url(#blob1)" variants={float} animate="animate" />
+        <motion.ellipse cx="55" cy="380" rx="80" ry="70" fill="url(#blob2)" variants={floatSlow} animate="animate" />
+
+        {/* ── Rotating dashed ring ─────────────────── */}
+        <motion.g transform="translate(190, 145)" variants={spin} animate="animate">
+          <circle cx="0" cy="0" r="76"
+            stroke="#FF8A4B" strokeWidth="1" strokeDasharray="6 10" opacity="0.22" />
         </motion.g>
 
-        {/* Abstract Floating Skills Node Clusters */}
-        <g>
-          {/* Node 1: Top-Right (React / Frontend symbol) */}
-          <circle cx="255" cy="75" r="4" className="stroke-solar-orange fill-white" strokeWidth="2" />
-          <path d="M 235,82 Q 255,68 275,82" className="stroke-slate-300 dark:stroke-slate-700" strokeWidth="1" strokeDasharray="3 3" />
-          
-          {/* Node 2: Top-Left (Cloud Server symbol) */}
-          <circle cx="65" cy="95" r="3" className="fill-slate-400 dark:fill-slate-600" />
-          <line x1="65" y1="95" x2="90" y2="115" className="stroke-slate-200 dark:stroke-slate-800" strokeWidth="1" />
-          
-          {/* Node 3: Bottom-Right */}
-          <circle cx="265" cy="225" r="3" className="fill-solar-orange/50" />
-          <line x1="265" y1="225" x2="230" y2="245" className="stroke-slate-200 dark:stroke-slate-800" strokeWidth="1" />
-        </g>
+        {/* ── Avatar circle ─────────────────────────── */}
+        <motion.g variants={pulse} animate="animate">
+          {/* Outer ring */}
+          <circle cx="190" cy="145" r="68" stroke="url(#avatarGrad)" strokeWidth="2.5" opacity="0.25" />
+          {/* Avatar fill */}
+          <circle cx="190" cy="145" r="58" fill="url(#avatarGrad)" />
+          {/* Monogram "D" */}
+          <text
+            x="186" y="164"
+            textAnchor="middle"
+            fill="white"
+            fontSize="54"
+            fontFamily="'Playfair Display', Georgia, serif"
+            fontStyle="italic"
+            fontWeight="700"
+            opacity="0.95"
+          >D</text>
+          {/* Tiny "S.N." below monogram */}
+          <text x="190" y="176" textAnchor="middle" fill="white" fontSize="10"
+            fontFamily="'Outfit', sans-serif" fontWeight="600" opacity="0.75" letterSpacing="3">S.N.</text>
+        </motion.g>
 
-        {/* 2. THE MINIMALIST PORTRAIT CHARACTER (Sleek, Mature, Clean) */}
-        {/* Grounding Base Line */}
-        <line
-          x1="50"
-          y1="250"
-          x2="270"
-          y2="250"
-          className="stroke-slate-800 dark:stroke-slate-300"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-        />
+        {/* ── Name ─────────────────────────────────── */}
+        <text x="190" y="228" textAnchor="middle" fill="#1C1310"
+          fontSize="18" fontFamily="'Playfair Display', serif" fontWeight="700">
+          Devika S. N.
+        </text>
 
-        {/* Floor Horizon Coordinates Grid Overlay */}
-        <line x1="80" y1="256" x2="240" y2="256" className="stroke-slate-200 dark:stroke-slate-800" strokeWidth="1.2" />
-        <line x1="110" y1="262" x2="210" y2="262" className="stroke-slate-100 dark:stroke-slate-900" strokeWidth="1" />
+        {/* ── Role pills ───────────────────────────── */}
+        {/* Pill 1: Full Stack Dev */}
+        <rect x="72" y="237" width="116" height="22" rx="11" fill="#FF8A4B" opacity="0.12" />
+        <text x="130" y="252" textAnchor="middle" fill="#D84C1B"
+          fontSize="9.5" fontFamily="'Outfit', sans-serif" fontWeight="800" letterSpacing="0.5">
+          FULL STACK DEV
+        </text>
+        {/* Pill 2: Designer */}
+        <rect x="196" y="237" width="88" height="22" rx="11" fill="#1C1310" opacity="0.06" />
+        <text x="240" y="252" textAnchor="middle" fill="#5F5650"
+          fontSize="9.5" fontFamily="'Outfit', sans-serif" fontWeight="800" letterSpacing="0.5">
+          DESIGNER
+        </text>
 
-        {/* CHARACTER GROUP (Female Engineer with glasses, bun, working on laptop) */}
-        <g>
-          {/* SITTING TORSO & WAIST (High-end geometric posture) */}
-          <path
-            d="M 90,250 C 90,220 100,165 115,145 L 145,145 C 145,175 138,220 138,250 Z"
-            className="fill-white dark:fill-slate-950 stroke-slate-800 dark:stroke-slate-200"
-            strokeWidth="2.5"
-            strokeLinejoin="round"
-          />
+        {/* ── Divider ──────────────────────────────── */}
+        <line x1="40" y1="273" x2="340" y2="273" stroke="#E8E0D6" strokeWidth="1" />
 
-          {/* SITTING LEGS COMFORTABLY OUTSTRETCHED (Slender, structured fashion-illustration lines) */}
-          <path
-            d="M 130,225 C 135,232 165,250 205,250 L 225,250 C 228,242 210,238 185,232 C 160,226 142,224 130,225 Z"
-            className="fill-slate-800 dark:fill-slate-900 stroke-slate-800 dark:stroke-slate-200"
-            strokeWidth="2.5"
-            strokeLinejoin="round"
-          />
-          {/* Professional Sleek Shoe Cuff */}
-          <path
-            d="M 225,250 L 235,242 L 239,250 Z"
-            className="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200"
-            strokeWidth="2"
-            strokeLinejoin="round"
-          />
+        {/* ── Stats row ─────────────────────────────── */}
+        {stats.map((s, i) => {
+          const cx = 80 + i * 110;
+          return (
+            <motion.g key={s.label}
+              initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.12, duration: 0.5 }}>
+              {/* Stat bubble */}
+              <rect x={cx - 38} y="282" width="76" height="52" rx="16"
+                fill="white" opacity="0.8"
+                style={{ filter: "drop-shadow(0 4px 10px rgba(28,19,16,0.08))" }}
+              />
+              <text x={cx} y="307" textAnchor="middle" fill="#1C1310"
+                fontSize="18" fontFamily="'Outfit', sans-serif" fontWeight="800">
+                {s.value}
+              </text>
+              <text x={cx} y="323" textAnchor="middle" fill="#9A8070"
+                fontSize="8.5" fontFamily="'Outfit', sans-serif" fontWeight="700" letterSpacing="1">
+                {s.label.toUpperCase()}
+              </text>
+            </motion.g>
+          );
+        })}
 
-          {/* BACK HAIR BUN (Clean, circular, top-knot profile representing Devika) */}
-          <circle
-            cx="98"
-            cy="88"
-            r="12"
-            className="fill-slate-800 dark:fill-slate-100 stroke-slate-800 dark:stroke-slate-200"
-            strokeWidth="2.5"
-          />
-          
-          {/* ELEGANT HEAD PROFILE (Turned slightly right/downwards to screen) */}
-          <path
-            d="M 103,98 C 95,98 96,118 106,118 C 114,118 122,114 122,106 C 122,98 112,98 103,98 Z"
-            className="fill-[#fffcf6] dark:fill-slate-900 stroke-slate-800 dark:stroke-slate-200"
-            strokeWidth="2.5"
-            strokeLinejoin="round"
-          />
+        {/* ── Skills grid ──────────────────────────── */}
+        {skills.map((skill, i) => {
+          const col = i % 3;
+          const row = Math.floor(i / 3);
+          const x = 44 + col * 100;
+          const y = 352 + row * 26;
+          const w = skill.length * 6.8 + 20;
+          return (
+            <motion.g key={skill}
+              initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.55 + i * 0.07, type: "spring", stiffness: 200, damping: 18 }}>
+              <rect x={x} y={y} width={w} height="19" rx="9.5"
+                fill="#1C1310" opacity="0.06" />
+              <rect x={x} y={y} width={w} height="19" rx="9.5"
+                stroke="#D6CFC6" strokeWidth="0.8" />
+              <text x={x + w / 2} y={y + 13} textAnchor="middle"
+                fill="#3D3530" fontSize="9" fontFamily="'Outfit', sans-serif" fontWeight="700">
+                {skill}
+              </text>
+            </motion.g>
+          );
+        })}
 
-          {/* REFINED Glasses (Sleek minimalist round frame) */}
-          <circle
-            cx="115"
-            cy="106"
-            r="7"
-            className="stroke-solar-orange"
-            strokeWidth="2"
-          />
-          {/* Nose curve */}
-          <path
-            d="M 121,108 Q 124,109 121,111"
-            className="stroke-slate-800 dark:stroke-slate-200"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
+        {/* ── Currently building strip ─────────────── */}
+        <rect x="26" y="408" width="328" height="28" rx="14" fill="#FF8A4B" opacity="0.09" />
+        <motion.circle cx="44" cy="422" r="4" fill="#22c55e" variants={blink} animate="animate" />
+        <text x="55" y="426" fill="#5F5650"
+          fontSize="9.5" fontFamily="'Outfit', sans-serif" fontWeight="700" letterSpacing="0.3">
+          Currently building Anvesync &amp; AgentVision X
+        </text>
 
-          {/* SLEEK PROFESSIONAL HAIR FLOW & NECK LINE */}
-          <path
-            d="M 101,98 C 96,88 108,82 118,92 C 122,96 122,102 118,105"
-            className="stroke-slate-800 dark:stroke-slate-200 fill-slate-800 dark:fill-slate-100"
-            strokeWidth="2"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M 107,118 Q 109,128 113,128"
-            className="stroke-slate-800 dark:stroke-slate-300"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
+        {/* ── Corner sparkles ──────────────────────── */}
+        <motion.g variants={float} animate="animate">
+          <line x1="344" y1="26" x2="344" y2="34" stroke="#FF8A4B" strokeWidth="1.5" strokeLinecap="round" opacity="0.55" />
+          <line x1="340" y1="30" x2="348" y2="30" stroke="#FF8A4B" strokeWidth="1.5" strokeLinecap="round" opacity="0.55" />
+        </motion.g>
+        <motion.g variants={floatSlow} animate="animate">
+          <circle cx="352" cy="50" r="3" fill="#FF8A4B" opacity="0.3" />
+          <circle cx="362" cy="40" r="2" fill="#FF8A4B" opacity="0.2" />
+        </motion.g>
 
-          {/* SWEATER V-NECK CUT */}
-          <path
-            d="M 111,133 L 119,141 L 127,133"
-            className="stroke-slate-800 dark:stroke-slate-300"
-            strokeWidth="1.8"
-          />
+        {/* Top-left status badge */}
+        <rect x="26" y="26" width="95" height="20" rx="10" fill="#FF8A4B" opacity="0.12" />
+        <circle cx="37" cy="36" r="3.5" fill="#22c55e" opacity="0.9" />
+        <text x="44" y="40" fill="#D84C1B"
+          fontSize="8.5" fontFamily="'Outfit', sans-serif" fontWeight="900" letterSpacing="1">
+          VTU STUDENT
+        </text>
 
-          {/* SLENDER ARM TYPING ON LAPTOP */}
-          <path
-            d="M 125,152 L 148,178 L 172,174"
-            className="stroke-slate-800 dark:stroke-slate-200"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {/* Hand joint coordinates cursor */}
-          <circle cx="172" cy="174" r="2.5" className="fill-solar-orange" />
-
-          {/* ULTRA-THIN GEOMETRIC LAPTOP (Highly detailed minimal representation) */}
-          <g transform="translate(162, 168)">
-            {/* Laptop Base (Tilted) */}
-            <line
-              x1="0"
-              y1="10"
-              x2="42"
-              y2="10"
-              className="stroke-slate-800 dark:stroke-slate-200"
-              strokeWidth="3.2"
-              strokeLinecap="round"
-            />
-            {/* Laptop Open Screen */}
-            <line
-              x1="40"
-              y1="10"
-              x2="52"
-              y2="-22"
-              className="stroke-slate-800 dark:stroke-solar-orange"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-            />
-            {/* Tiny structural screen base connector */}
-            <circle cx="40" cy="10" r="2" className="fill-slate-800 dark:fill-slate-200" />
-          </g>
-
-          {/* Glowing code brackets / analytics beam emitting from the screen */}
-          <motion.g variants={pulseVariants} animate="animate">
-            <line x1="210" y1="140" x2="230" y2="130" className="stroke-solar-orange/50" strokeWidth="1.5" strokeLinecap="round" />
-            <line x1="212" y1="152" x2="238" y2="152" className="stroke-amber-400/40" strokeWidth="1.5" strokeLinecap="round" />
-            <line x1="208" y1="164" x2="226" y2="174" className="stroke-solar-orange/50" strokeWidth="1.5" strokeLinecap="round" />
-            
-            {/* High-end decorative `< >` code brackets icon near laptop display */}
-            <path
-              d="M 235,115 L 227,119 L 235,123"
-              className="stroke-solar-orange"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M 242,115 L 250,119 L 242,123"
-              className="stroke-solar-orange"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </motion.g>
-        </g>
-
-        {/* Binary Bits telemetry spark details (representing software focus) */}
-        <text x="50" y="160" className="font-mono text-[9px] font-black fill-slate-300 dark:fill-slate-700 select-none">1</text>
-        <text x="210" y="90" className="font-mono text-[9px] font-black fill-slate-300 dark:fill-slate-700 select-none">0</text>
-        <text x="240" y="210" className="font-mono text-[9px] font-black fill-solar-orange/30 select-none">1</text>
-        <text x="80" y="200" className="font-mono text-[9px] font-black fill-slate-300 dark:fill-slate-700 select-none">0</text>
+        {/* Top-right year */}
+        <text x="354" y="40" textAnchor="end" fill="#9A8070"
+          fontSize="8.5" fontFamily="'Outfit', sans-serif" fontWeight="600" opacity="0.7">
+          2024 – 2028
+        </text>
       </svg>
     </div>
   );
