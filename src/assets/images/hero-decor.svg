@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1400" viewBox="0 0 1400 1400" role="img" aria-labelledby="title desc">
+  <title id="title">Hero decorative placeholder</title>
+  <desc id="desc">Decorative rounded portrait-style placeholder with warm cream background and soft orange swirl.</desc>
+  <rect width="100%" height="100%" fill="#F7F4EF" />
+
+  <!-- Soft rounded card -->
+  <g transform="translate(80,120)">
+    <rect x="0" y="0" width="900" height="1200" rx="40" fill="#fff" opacity="0.95"/>
+    <rect x="8" y="8" width="900" height="1200" rx="40" fill="none" stroke="#E9E1DD" stroke-width="2"/>
+
+    <!-- warm peach overlay shape -->
+    <path d="M0 800 C 120 680 300 680 420 760 C 560 860 760 900 900 800 L900 1200 L0 1200 Z" fill="#FFE7D9" opacity="0.9" />
+
+    <!-- playful scribble line -->
+    <path d="M120 920 C 260 820 360 820 500 920 C 640 1020 860 980 920 920" fill="none" stroke="#FF7C00" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" />
+  </g>
+</svg>
