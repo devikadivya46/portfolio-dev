@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Dark mode is not supported by this site — force the "dark:" variant to never match,
+   regardless of the visitor's OS/browser color-scheme preference. */
+@custom-variant dark (&:where(.force-dark-unused &));
+
 @theme {
   /* LUXURY WARM PALETTE */
   --color-cream-950: #F9F7F3;
@@ -79,6 +83,23 @@
   transform: translateZ(0);
   will-change: transform, opacity;
   animation: floaty 7s ease-in-out infinite;
+}
+
+/* Auto-scrolling marquee track for the My Journey milestone cards */
+@keyframes journey-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.journey-marquee-track {
+  animation: journey-marquee 34s linear infinite;
+}
+.journey-marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .journey-marquee-track {
+    animation: none;
+  }
 }
 
 /* translucent acrylic card (frosted, glossy) */
@@ -569,140 +590,4 @@ Tips:
  - Keep the illustration `pointer-events: none` so it never blocks interaction.
  - Raise content z-index with `overlap-top` to let cards and headings sit above the flowers.
 */
-
-/* PERFECT HIGH-FIDELITY PRINT SYSTEM FOR SINGLE-PAGE A4 RESUMES */
-@media print {
-  /* Hide all main page content elements during printing to prevent physical layout overflow */
-  #root > :not(.fixed),
-  header,
-  main,
-  footer,
-  #celestial-canvas {
-    display: none !important;
-  }
-
-  /* Reset document flow and scroll locks */
-  html, body {
-    background-color: #ffffff !important;
-    background-image: none !important;
-    color: #000000 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    height: auto !important;
-  }
-
-  /* Reset modal positioning to print cleanly */
-  .fixed.inset-0 {
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 100% !important;
-    height: auto !important;
-    overflow: visible !important;
-    background: none !important;
-    backdrop-filter: none !important;
-    display: block !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    z-index: auto !important;
-  }
-
-  /* Reset inner card styling */
-  .fixed.inset-0 .rounded-3xl {
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    border: none !important;
-    background: white !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Hide dynamic action controls and header elements from being printed */
-  .fixed.inset-0 .flex.items-center.justify-between,
-  .fixed.inset-0 .rounded-2xl.bg-orange-50 {
-    display: none !important;
-  }
-
-  /* Reset the inner scroll container */
-  .fixed.inset-0 .flex-1.overflow-y-auto {
-    overflow: visible !important;
-    padding: 0 !important;
-    background: white !important;
-    height: auto !important;
-  }
-
-  /* Selectively make the print sheet and its recursive children visible */
-  #printable-resume-area,
-  #printable-resume-area * {
-    visibility: visible !important;
-    display: block !important;
-  }
-
-  /* Allow inline flex and grids to render properly in the resume */
-  #printable-resume-area .flex {
-    display: flex !important;
-  }
-  #printable-resume-area .grid {
-    display: grid !important;
-  }
-  #printable-resume-area span,
-  #printable-resume-area strong,
-  #printable-resume-area a {
-    display: inline !important;
-  }
-
-  /* Reset the print container to absolutely cover the entire document window */
-  #printable-resume-area {
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    background: white !important;
-    color: black !important;
-  }
-  
-  /* Enforce black-and-white high contrast text for legibility */
-  #printable-resume-area h1 {
-    color: #000000 !important;
-    font-size: 20pt !important;
-    margin-bottom: 4px !important;
-  }
-  
-  #printable-resume-area h2 {
-    color: #111111 !important;
-    border-bottom: 1.5px solid #000000 !important;
-    font-size: 11pt !important;
-    margin-top: 14px !important;
-    margin-bottom: 6px !important;
-    padding-bottom: 2px !important;
-  }
-
-  #printable-resume-area p,
-  #printable-resume-area li,
-  #printable-resume-area span,
-  #printable-resume-area strong {
-    color: #222222 !important;
-    font-size: 8.5pt !important;
-  }
-
-  #printable-resume-area a {
-    color: #000000 !important;
-    text-decoration: underline !important;
-  }
-
-  /* Define standard A4 page dimensions and reset margins */
-  @page {
-    size: A4 portrait;
-    margin: 1.2cm 1.5cm;
-  }
-}
 

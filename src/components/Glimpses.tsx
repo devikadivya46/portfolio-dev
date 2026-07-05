@@ -69,7 +69,7 @@ export default function Glimpses() {
               <h3 className="text-2xl sm:text-3xl font-serif font-semibold text-[#1C1310] dark:text-white leading-snug">
                 My Journey
               </h3>
-              <p className="text-sm text-[#5F5650] dark:text-slate-400 mt-1">Internships, certifications &amp; milestones — scrollable.</p>
+              <p className="text-sm text-[#5F5650] dark:text-slate-400 mt-1">Internships, certifications &amp; milestones — auto-scrolling, hover to pause.</p>
             </div>
             {/* Legend */}
             <div className="flex flex-wrap items-center gap-3 shrink-0">
@@ -90,17 +90,17 @@ export default function Glimpses() {
               <div className="relative">
                 <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#F7F4EF] dark:from-[#0F0C0A] to-transparent z-10" />
                 <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#F7F4EF] dark:from-[#0F0C0A] to-transparent z-10" />
-                <div className="overflow-x-auto pb-3" style={{ scrollbarWidth: "none" }}>
-                  <div className="flex gap-3 w-max px-1">
-                    {journeyMilestones.map((m, idx) => {
+                <div className="overflow-hidden pb-3">
+                  <div className="flex gap-3 w-max px-1 journey-marquee-track">
+                    {[...journeyMilestones, ...journeyMilestones].map((m, idx) => {
                       const colors = typeColors[m.type];
                       return (
                         <motion.div
-                          key={m.id}
+                          key={`${m.id}-${idx}`}
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, margin: "-40px" }}
-                          transition={{ type: "spring" as const, stiffness: 80, damping: 16, delay: idx * 0.04 }}
+                          transition={{ type: "spring" as const, stiffness: 80, damping: 16, delay: (idx % journeyMilestones.length) * 0.04 }}
                           whileHover={{ y: -4 }}
                           className="group relative w-[148px] shrink-0 overflow-hidden rounded-[18px] neu-card border border-white/50 dark:border-white/5 hover:border-orange-100 dark:hover:border-orange-950 transition-all duration-300"
                         >

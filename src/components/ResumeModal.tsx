@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
+import { RESUME_PDF } from "../data";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,10 +31,6 @@ interface ResumeModalProps {
 }
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
-  const handlePrint = () => {
-    window.print();
-  };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -47,29 +44,30 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             className="relative flex h-full max-h-[92vh] w-full max-w-5xl flex-col rounded-3xl bg-white shadow-2xl overflow-hidden"
           >
             {/* Header / Controls */}
-            <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50/50 px-6 py-4 dark:bg-slate-900/10">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-solar-orange">
+            <div className="flex items-center justify-between gap-2 border-b border-slate-100 bg-slate-50/50 px-4 py-3 sm:px-6 sm:py-4">
+              <div className="flex min-w-0 items-center gap-2">
+                <span className="material-symbols-outlined text-solar-orange shrink-0">
                   badge
                 </span>
-                <span className="font-display text-sm font-extrabold uppercase tracking-wider text-slate-800">
-                  Interactive Resume & CV
+                <span className="truncate font-display text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-800">
+                  Resume & CV
                 </span>
-                <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-emerald-800 animate-pulse">
+                <span className="hidden sm:inline-block shrink-0 rounded-full bg-emerald-100 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-emerald-800 animate-pulse">
                   Up-To-Date
                 </span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <button
-                  onClick={handlePrint}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-[#FF8A4B] to-[#D84C1B] px-5 py-2 text-xs font-black uppercase tracking-wider text-white shadow-md hover:-translate-y-0.5 transition-transform cursor-pointer"
+              <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+                <a
+                  href={RESUME_PDF}
+                  download
+                  className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-[#FF8A4B] to-[#D84C1B] px-3.5 sm:px-5 py-2 text-[11px] sm:text-xs font-black uppercase tracking-wider text-white shadow-md hover:-translate-y-0.5 transition-transform cursor-pointer whitespace-nowrap"
                 >
-                  <span className="material-icons-outlined text-sm">print</span>
-                  Print / Save PDF
-                </button>
+                  <span className="material-icons-outlined text-sm">download</span>
+                  Download
+                </a>
                 <button
                   onClick={onClose}
-                  className="rounded-full bg-slate-100 p-2 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition-colors cursor-pointer"
+                  className="shrink-0 rounded-full bg-slate-100 p-2 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition-colors cursor-pointer"
                   title="Close"
                 >
                   <span className="material-icons-outlined text-lg block">close</span>
@@ -78,24 +76,14 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
 
             {/* Resume Canvas (Scrollable area) */}
-            <div className="flex-1 overflow-y-auto bg-slate-100/50 p-6 sm:p-10">
-              {/* Instructions Banner */}
-              <div className="mx-auto mb-6 max-w-[210mm] rounded-2xl bg-orange-50 border border-orange-100 p-4 text-xs text-orange-800">
-                <div className="flex gap-2 items-start">
-                  <span className="material-symbols-outlined text-solar-orange text-lg shrink-0">info</span>
-                  <div>
-                    <span className="font-bold">Pro-Tip for PDF Download:</span> Clicking <strong>"Print / Save PDF"</strong> opens your system print screen. Change your destination to <strong>"Save as PDF"</strong>, ensure <strong>"Background graphics"</strong> is enabled, and margins are set to <strong>"Default"</strong> or <strong>"None"</strong> to download a pristine vector PDF!
-                  </div>
-                </div>
-              </div>
-
+            <div className="flex-1 overflow-y-auto bg-slate-100/50 p-3 sm:p-10">
               {/* Printable Area (Simulating an A4 paper sheet with premium animations) */}
               <motion.div
                 id="printable-resume-area"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="mx-auto w-full max-w-[210mm] bg-white p-10 sm:p-14 shadow-lg rounded-2xl text-slate-900 border border-slate-100/60"
+                className="mx-auto w-full max-w-[210mm] bg-white p-5 sm:p-14 shadow-lg rounded-2xl text-slate-900 border border-slate-100/60"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {/* Header Block */}
